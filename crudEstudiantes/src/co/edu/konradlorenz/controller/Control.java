@@ -10,7 +10,7 @@ public class Control {
 	
 	// - // - // Methods // - // - //
 	public void run() {
-		
+		//TODO: Crear la lista de pasos que realiza el Control.
 	}
 	
 }

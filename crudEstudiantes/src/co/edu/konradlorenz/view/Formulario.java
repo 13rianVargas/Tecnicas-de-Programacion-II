@@ -8,7 +8,7 @@ public class Formulario {
 	static Scanner leer = new Scanner(System.in);
 	
 	
-	// - // - // Methods // - // - // 
+	// - // - // Methods // - // - //TODO: crear todos los "pedir" de los atributos que necesito.
 	public static long pedirLong(){
 		return 0;
 	}
