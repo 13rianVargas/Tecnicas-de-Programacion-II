@@ -3,8 +3,14 @@ package co.edu.konradlorenz.controller;
 public class AplMain {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		// - // - // Attributes // - // - //
+		Control control = new Control();
+		
+		
+		// - // - // Methods // - // - //
+		control.run();
+		
 	}
 
 }
