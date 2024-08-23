@@ -9,19 +9,19 @@ public class Formulario {
 	
 	
 	// - // - // Methods // - // - //TODO: crear todos los "pedir" de los atributos que necesito.
-	public static long pedirLong(){
+	public static long pedirLong(){//Mandatory
 		return 0;
 	}
 	
-	public static String pedirString(){
+	public static String pedirString(String xd){//Mandatory
 		return "";
 	}
 
-	public static void mostrarEstudiante(String palabraDeBusqueda){
+	public static void mostrarEstudiante(String palabraDeBusqueda){//Mandatory
 		
 	}
 	
-	public static int pedirEntero() {
+	public static int pedirEntero(String xd) {//Mandatory
 		return 0;
 	}
 }
