@@ -24,8 +24,6 @@ public class Maquina {
 		double subTotal = vehiculo.getPrecioAntesIva() + soloIva;
 		double totalPagar = vehiculo.calcularMultiplo50();
 		double ajuste = vehiculo.calcularMultiplo50() - subTotal;
-		
-		//3. show receipt
 		String placa = vehiculo.getPlaca();
 		String fecha = vehiculo.getFecha();
 		String tipoVehiculo = vehiculo.getTipoDeVehiculo();
@@ -39,6 +37,7 @@ public class Maquina {
 			valorMinuto = vehiculo.getPrecioCarro();
 		}
 		
+		//3. show receipt
 		Factura.mostrarFactura(placa, fecha, tipoVehiculo, duracion, valorMinuto, valorParqueo, soloIva, subTotal, ajuste, totalPagar);
 		
 	}//close run
