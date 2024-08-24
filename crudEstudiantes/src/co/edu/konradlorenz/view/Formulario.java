@@ -9,6 +9,24 @@ public class Formulario {
 	
 	
 	// - // - // Methods // - // - //
+	public static byte mostrarMenu() {
+		System.out.println(""
+				+ "»»» ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ «««"
+				+ "»»»    FUNDACIÓN UNIVERSITARIA KONRAD LORENZ    «««"
+				+ "»»» ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ «««"
+				+ "»»»                                             «««"
+				+ "»»»           Seleccione una opción:            «««"
+				+ "»»»                                             «««"
+				+ "»»»  [1] Mostrar todos los estudiantes          «««"
+				+ "»»»  [2] Nuevo estudiante                       «««"
+				+ "»»»  [3] Modificar estudiante                   «««"
+				+ "»»»  [4] Eliminar estudiante                    «««"
+				+ "»»»  [5] Salir                                  «««"
+				+ "»»»                                             «««"
+				+ "»»» ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ «««");
+		return leer.nextByte();
+	}
+	
 	public static String pedirNombres(String nombres){//Mandatory pedirString(String):String;
 		System.out.println("Ingrese los nombres del estudiante: ");
 		nombres = leer.nextLine();

@@ -16,16 +16,58 @@ public class Control {
 	// - // - // Methods // - // - //
 	public void run() {
 		//TODO: Crear la lista de pasos que realiza el Control.
-		//1. Getting data
-		//estudiante.setNombres(Formulario.pedirNombres(null));//TODO: Resolver el null
-		estudiante.setApellidos(Formulario.pedirApellidos());
-		estudiante.setCodigo(Formulario.pedirCodigo());
-		estudiante.setEdad(Formulario.pedirEdad());
-		estudiante.setPrograma(Formulario.pedirPrograma());
-		estudiante.setCorreo(Formulario.pedirCorreo());
-		estudiante.setNumeroMatricula(Formulario.pedirNumeroMatricula());
 		
-		//2. Setting variables to send to View
+		//0. Show menu
+		byte option;
+		
+		do {//Ciclo para verificar que option sea una opción valida. 
+			option = Formulario.mostrarMenu();
+		} while (option != 1 && option != 2 && option != 3 &&  option != 4 && option != 5);
+	
+		
+		//1. Using the option in a switch case
+		switch (option) {
+		case 1://[1] Mostrar todos los estudiantes
+			
+			for (Estudiante estudiante : listaDeEstudiantes) {
+	            System.out.println(estudiante);//Puede que toque usar el toString
+	        }
+			
+			break;
+		case 2://[2] Nuevo estudiante
+			
+			Estudiante nuevoEstudiante = new Estudiante();//Crea nuevoEstudiante
+			
+			//Pide datos del nuevoEstudiante
+			nuevoEstudiante.setNombres(Formulario.pedirNombres(null));//TODO: Resolver el null
+			nuevoEstudiante.setApellidos(Formulario.pedirApellidos());
+			nuevoEstudiante.setCodigo(Formulario.pedirCodigo());
+			nuevoEstudiante.setEdad(Formulario.pedirEdad());
+			nuevoEstudiante.setPrograma(Formulario.pedirPrograma());
+			nuevoEstudiante.setCorreo(Formulario.pedirCorreo());
+			nuevoEstudiante.setNumeroMatricula(Formulario.pedirNumeroMatricula());
+			
+			//Guarda el nuevoEstudiante en la listaDeEstudiantes
+			listaDeEstudiantes.add(nuevoEstudiante);
+			
+			break;
+		case 3://[3] Modificar estudiante
+			
+			break;
+		case 4://[4] Eliminar estudiante
+			
+			break;
+		case 5://[5] Salir
+			
+			break;
+		default:
+			
+			break;
+		}
+		
+		//6. Getting data
+		
+		//7. Setting variables to send to View
 		String nombres=estudiante.getNombres();
 		String apellidos=estudiante.getApellidos();
 		long codigo=estudiante.getCodigo();
@@ -34,16 +76,16 @@ public class Control {
 		String correo=estudiante.getCorreo();
 		byte numeroMatricula=estudiante.getNumeroMatricula();
 		
-		//3. Iterate the list
+		//8. Iterate the list
 		
 		//for (int i = 0; i < listaDeEstudiantes.size(); i++) {
 			
 		//}//TODO:Crear for
 			
-		//4. Sending to view
+		//9. Sending to view
 		Formulario.mostrarEstudiante(null);//TODO: Resolver el null
 		
-		//5. 
+		//10. 
 		//int index = Formulario.pedirEntero("");
 		//listaDeEstudiantes.get(index);
 	}
