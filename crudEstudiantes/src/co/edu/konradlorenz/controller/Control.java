@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import co.edu.konradlorenz.model.Estudiante;
 import co.edu.konradlorenz.view.Formulario;
-//import co.edu.konradlorenz.view.Formulario; //Static then no longer useful//
 
 public class Control {
 	
@@ -18,7 +17,7 @@ public class Control {
 	public void run() {
 		//TODO: Crear la lista de pasos que realiza el Control.
 		//1. Getting data
-		estudiante.setNombres(Formulario.pedirNombres(null));
+		//estudiante.setNombres(Formulario.pedirNombres(null));//TODO: Resolver el null
 		estudiante.setApellidos(Formulario.pedirApellidos());
 		estudiante.setCodigo(Formulario.pedirCodigo());
 		estudiante.setEdad(Formulario.pedirEdad());
@@ -37,11 +36,16 @@ public class Control {
 		
 		//3. Iterate the list
 		
-		
+		//for (int i = 0; i < listaDeEstudiantes.size(); i++) {
+			
+		//}//TODO:Crear for
+			
 		//4. Sending to view
-		Formulario.mostrarEstudiante(null);
+		Formulario.mostrarEstudiante(null);//TODO: Resolver el null
 		
-		
+		//5. 
+		//int index = Formulario.pedirEntero("");
+		//listaDeEstudiantes.get(index);
 	}
 	
 }

@@ -49,10 +49,10 @@ public class Formulario {
 		System.out.println(estudianteInfo);
 	}
 	
-	public static int pedirEntero(String numero) {//Mandatory pedirEntero(String):int;
-		System.out.println("Selecciona el número del estudiante: ");
+	public static int pedirEntero(String wtf) {//Mandatory pedirEntero(String):int;
+		
 		//WTF No entiendo 🤡
-		//TODO:Método para mostrar la lista de estudiantes.
+		//TODO: Entender que chotas se hace aquí.
 		return leer.nextInt();
 	}
 }
