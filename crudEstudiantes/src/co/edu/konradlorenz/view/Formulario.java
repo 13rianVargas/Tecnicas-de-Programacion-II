@@ -4,139 +4,158 @@ import java.util.Scanner;
 
 public class Formulario {
 	
-	// - // - // Attributes // - // - //
+	// - // - // Objects // - // - //
 	static Scanner leer = new Scanner(System.in);
 	
 	
 	// - // - // Methods // - // - //
-	public static byte mostrarMenu() {
-		System.out.println(""
-				+ "»»» ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ «««"
-				+ "»»»    FUNDACIÓN UNIVERSITARIA KONRAD LORENZ    «««"
-				+ "»»» ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ «««"
-				+ "»»»                                             «««"
-				+ "»»»           Seleccione una opción:            «««"
-				+ "»»»                                             «««"
-				+ "»»»  [1] Mostrar todos los estudiantes          «««"
-				+ "»»»  [2] Nuevo estudiante                       «««"
-				+ "»»»  [3] Modificar estudiante                   «««"
-				+ "»»»  [4] Eliminar estudiante                    «««"
-				+ "»»»  [5] Salir                                  «««"
-				+ "»»»                                             «««"
-				+ "»»» ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ «««");
-		return leer.nextByte();
+	
+	public static byte mostrarMenu(/*/TODO:String WTF/*/) {//Mandatory pedirEntero(String):int;
+		System.out.println("\n"
+				+ "»»» ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ «««\n"
+				+ "»»»    FUNDACIÓN UNIVERSITARIA KONRAD LORENZ    «««\n"
+				+ "»»» ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ «««\n"
+				+ "»»»                                             «««\n"
+				+ "»»»           Seleccione una opción:            «««\n"
+				+ "»»»                                             «««\n"
+				+ "»»»  [1] Mostrar todos los estudiantes          «««\n"
+				+ "»»»  [2] Nuevo estudiante                       «««\n"
+				+ "»»»  [3] Modificar estudiante                   «««\n"
+				+ "»»»  [4] Eliminar estudiante                    «««\n"
+				+ "»»»  [5] Salir                                  «««\n"
+				+ "»»»                                             «««\n"
+				+ "»»» ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ «««\n");
+		byte option = leer.nextByte();
+		leer.nextLine();//Limpia Buffer
+		return option;
 	}
 	
-	public static String pedirNombres(String nombres){//Mandatory pedirString(String):String;
+	public static void mostrarEstudiante(String estudianteToString){//Mandatory mostrarEstudiante(String):void;
+		System.out.println(estudianteToString);
+	}
+	
+	public static String pedirNombres(/*/String nombres/*/){//Mandatory pedirString(String):String;
 		System.out.println("Ingrese los nombres del estudiante: ");
-		nombres = leer.nextLine();
-		return nombres;
+		return leer.nextLine();
 	}
 	
-	public static String pedirApellidos(/*/String apellidos/*/){
+	public static String pedirApellidos(){
 		System.out.println("Ingrese los apellidos del estudiante: ");
 		return leer.nextLine();
 	}
 	
 	public static long pedirCodigo(){//Mandatory pedirLong():long;
 		System.out.println("Ingrese el código del estudiante: ");
-		return leer.nextLong();
+		long codigo = leer.nextLong();
+		leer.nextLine();//Limpia Buffer
+		return codigo;
 	}
 	
 	public static byte pedirEdad(){
 		System.out.println("Ingrese la edad del estudiante: ");
-		return leer.nextByte();
+		byte edad = leer.nextByte();
+		leer.nextLine();//Limpia Buffer
+		return edad;
 	}
 	
-	public static String pedirPrograma(/*/String programa/*/){
+	public static String pedirPrograma(){
 		System.out.println("Ingrese el programa del estudiante: ");
 		return leer.nextLine();
 	}
 	
-	public static String pedirCorreo(/*/String correo/*/){
+	public static String pedirCorreo(){
 		System.out.println("Ingrese el correo del estudiante: ");
 		return leer.nextLine();
 	}
 	
 	public static byte pedirNumeroMatricula(){
 		System.out.println("Ingrese el número de matrícula del estudiante: ");
-		return leer.nextByte();
+		byte matricula = leer.nextByte();
+		leer.nextLine();//Limpia Buffer
+		return matricula;
 	}
 	
-	public static void mostrarEstudiante(String estudianteInfo){//Mandatory mostrarEstudiante(String):void;
-		System.out.println(estudianteInfo);
-	}
-	
-	public static int pedirEntero(String wtf) {//Mandatory pedirEntero(String):int;
-		
-		//WTF No entiendo 🤡
-		//TODO: Entender que chotas se hace aquí.
-		return leer.nextInt();
+	public static void estudianteCreadoExitoso(){
+		System.out.println("\n"
+				+ "»»»                                             «««\n"
+				+ "»»»     ¡Nuevo estudiante creado con éxito!     «««\n"
+				+ "»»»                                             «««\n");
 	}
 	
 	public static String pedirPalabraDeBusqueda(){
-		System.out.println(""
-				+ "»»»                                             «««"
-				+ "»»»      Ingrese un atributo de busqueda:       «««"
-				+ "»»»                                             «««");
+		System.out.println("\n"
+				+ "»»»                                             «««\n"
+				+ "»»»      Ingrese un atributo de busqueda:       «««\n"
+				+ "»»»      (Nombres/Apellidos/Código/Correo)      «««\n"
+				+ "»»»                                             «««\n");
 		return leer.nextLine();
 	}
 	
 	public static String reintentarPalabraDeBusqueda(){
-		System.out.println(""
-				+ "»»»                                             «««"
-				+ "»»» Ingrese un atributo de busqueda diferente:  «««"
-				+ "»»»                                             «««");
+		System.out.println("\n"
+				+ "»»»                                             «««\n"
+				+ "»»» Ingrese un atributo de busqueda diferente:  «««\n"
+				+ "»»»      (Nombres/Apellidos/Código/Correo)      «««\n"
+				+ "»»»                                             «««\n");
 		return leer.nextLine();
 	}
 	
+	public static void estudianteEncontrado(){
+		System.out.println("\n"
+				+ "»»»                                             «««\n"
+				+ "»»»           ¡Estudiante encontrado!           «««\n"
+				+ "»»»                                             «««\n");
+	}
+	
 	public static String pedirNuevoAtributo() {
-		System.out.println(""
-				+ "»»»                                             «««"
-				+ "»»»         Ingrese el nuevo atributo:          «««"
-				+ "»»»                                             «««");
+		System.out.println("\n"
+				+ "»»»                                             «««\n"
+				+ "»»»         Ingrese el nuevo atributo:          «««\n"
+				+ "»»»                                             «««\n");
 		return leer.nextLine();
 	}
 	
 	public static byte menuModificar() {
-		System.out.println(""
-				+ "»»» ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ «««"
-				+ "»»»    FUNDACIÓN UNIVERSITARIA KONRAD LORENZ    «««"
-				+ "»»» ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ «««"
-				+ "»»»                                             «««"
-				+ "»»»     Seleccione una opción a modificar:      «««"
-				+ "»»»                                             «««"
-				+ "»»»  [1] Nombres                                «««"
-				+ "»»»  [2] Apellidos                              «««"
-				+ "»»»  [3] Código                                 «««"
-				+ "»»»  [4] Edad                                   «««"
-				+ "»»»  [5] Programa                               «««"
-				+ "»»»  [6] Correo                                 «««"
-				+ "»»»  [7] Número de matrícula                    «««"
-				+ "»»»  [8] Cancelar modificación                  «««"
-				+ "»»»                                             «««"
-				+ "»»» ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ «««");
-		return leer.nextByte();
+		System.out.println("\n"
+				+ "»»» ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ «««\n"
+				+ "»»»    FUNDACIÓN UNIVERSITARIA KONRAD LORENZ    «««\n"
+				+ "»»» ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ «««\n"
+				+ "»»»                                             «««\n"
+				+ "»»»     Seleccione una opción a modificar:      «««\n"
+				+ "»»»                                             «««\n"
+				+ "»»»  [1] Nombres                                «««\n"
+				+ "»»»  [2] Apellidos                              «««\n"
+				+ "»»»  [3] Código                                 «««\n"
+				+ "»»»  [4] Edad                                   «««\n"
+				+ "»»»  [5] Programa                               «««\n"
+				+ "»»»  [6] Correo                                 «««\n"
+				+ "»»»  [7] Número de matrícula                    «««\n"
+				+ "»»»  [8] Cancelar modificación                  «««\n"
+				+ "»»»                                             «««\n"
+				+ "»»» ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ «««\n");
+		byte option = leer.nextByte();
+		leer.nextLine();//Limpia Buffer
+		return option;
 	}
 	
 	public static void cambioAtributoExitoso(){
-		System.out.println(""
-				+ "»»»                                             «««"
-				+ "»»»      ¡Atributo actualizado con éxito!       «««"
-				+ "»»»                                             «««");
+		System.out.println("\n"
+				+ "»»»                                             «««\n"
+				+ "»»»      ¡Atributo actualizado con éxito!       «««\n"
+				+ "»»»                                             «««\n");
 	}
 	
 	public static void eliminarEstudianteExitoso(){
-		System.out.println(""
-				+ "»»»                                             «««"
-				+ "»»»      ¡Estudiante eliminado con éxito!       «««"
-				+ "»»»                                             «««");
+		System.out.println("\n"
+				+ "»»»                                             «««\n"
+				+ "»»»      ¡Estudiante eliminado con éxito!       «««\n"
+				+ "»»»                                             «««\n");
 	}
 	
 	public static void salir(){
-		System.out.println(""
-				+ "»»»                                             «««"
-				+ "»»»           Saliendo del sistema...           «««"
-				+ "»»»                                             «««");
+		System.out.println("\n"
+				+ "»»»                                             «««\n"
+				+ "»»»           Saliendo del sistema...           «««\n"
+				+ "»»»                                             «««\n");
 	}
 }

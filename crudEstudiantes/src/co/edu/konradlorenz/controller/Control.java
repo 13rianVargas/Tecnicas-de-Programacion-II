@@ -11,39 +11,52 @@ public class Control {
 	protected Estudiante estudiante = new Estudiante();
 	//protected Formulario formulario = new Formulario(); //Static then no longer useful
 	private ArrayList<Estudiante> listaDeEstudiantes = new ArrayList<>();
+	private static byte option;
 	
 	
 	// - // - // Methods // - // - //
 	public void run() {
-		//TODO: Crear la lista de pasos que realiza el Control.
-		//TODO: Regresar al menú principal.
 		
 		//0. Show menu
+		option = menu();
+
+		//1. Using the option in a switch case
+		option = switch1(option);
+		
+	}//close run
+	
+	public byte menu() {
+		
 		byte option;
 		
 		do {//Ciclo para verificar que option sea una opción valida. 
 			option = Formulario.mostrarMenu();
 		} while (option != 1 && option != 2 && option != 3 &&  option != 4 && option != 5);
-	
 		
-		//1. Using the option in a switch case
+		return option;
+		
+	}//close menu
+	
+	public byte switch1(byte option) {
 		switch (option) {
 		case 1://[1] Mostrar todos los estudiantes
 			
 			for (Estudiante estudiante : listaDeEstudiantes) {
-	            System.out.println(estudiante);//Puede que toque usar el toString
-	            //TODO: No sysos
+	            
+				String estudianteToString= estudiante.toString(); 
+				Formulario.mostrarEstudiante(estudianteToString);
+				
 	        }
 			
 			option = 0;//Reinicia option
 			
-			break;
+			return option = menu();//Vuelve al menú
 		case 2://[2] Nuevo estudiante
 			
 			Estudiante nuevoEstudiante = new Estudiante();//Crea nuevoEstudiante
 			
 			//Pide datos del nuevoEstudiante
-			nuevoEstudiante.setNombres(Formulario.pedirNombres(null));//TODO: Resolver el null
+			nuevoEstudiante.setNombres(Formulario.pedirNombres(/*/null/*/));//TODO: Resolver el null
 			nuevoEstudiante.setApellidos(Formulario.pedirApellidos());
 			nuevoEstudiante.setCodigo(Formulario.pedirCodigo());
 			nuevoEstudiante.setEdad(Formulario.pedirEdad());
@@ -54,9 +67,11 @@ public class Control {
 			//Guarda el nuevoEstudiante en la listaDeEstudiantes
 			listaDeEstudiantes.add(nuevoEstudiante);
 			
+			Formulario.estudianteCreadoExitoso();
+			
 			option = 0;//Reinicia option
 			
-			break;
+			return option = menu();//Vuelve al menú
 		case 3://[3] Modificar estudiante
 			
 			String palabraDeBusqueda = Formulario.pedirPalabraDeBusqueda();
@@ -100,13 +115,12 @@ public class Control {
 				Formulario.cambioAtributoExitoso();
 				break;
 			case 8:
-				
-				break;
-			}
+				return option = menu();//Vuelve al menú
+			}//close switch2
 			
 			option = 0;//Reinicia option
 			
-			break;
+			return option = menu();//Vuelve al menú
 		case 4://[4] Eliminar estudiante
 			
 			palabraDeBusqueda = Formulario.pedirPalabraDeBusqueda();
@@ -118,40 +132,20 @@ public class Control {
 			
 			option = 0;//Reinicia option
 			
-			break;
+			return option = menu();//Vuelve al menú
 		case 5://[5] Salir
 			
 			Formulario.salir();
 			
-			option = 0;//Reinicia option
+			System.exit(0);//Finaliza programa
 			
-			break;
-		}
-		
-		//6. Getting data
-		
-		//7. Setting variables to send to View
-		String nombres=estudiante.getNombres();
-		String apellidos=estudiante.getApellidos();
-		long codigo=estudiante.getCodigo();
-		byte edad=estudiante.getEdad();
-		String programa=estudiante.getPrograma();
-		String correo=estudiante.getCorreo();
-		byte numeroMatricula=estudiante.getNumeroMatricula();
-		
-		//8. Iterate the list
-		
-		//for (int i = 0; i < listaDeEstudiantes.size(); i++) {
+			return 0;
 			
-		//}//TODO:Crear for
-			
-		//9. Sending to view
-		Formulario.mostrarEstudiante(null);//TODO: Resolver el null
+		}//close switch1
 		
-		//10. 
-		//int index = Formulario.pedirEntero("");
-		//listaDeEstudiantes.get(index);
+		return option = menu();//Vuelve al menú
 	}
+	
 	
 	public Estudiante buscarEstudiante(String palabraDeBusqueda){
 		
@@ -159,19 +153,23 @@ public class Control {
 		
 		for (Estudiante estudiante : listaDeEstudiantes) {
             if (estudiante.getNombres().equals(palabraDeBusqueda)) {
+            	Formulario.estudianteEncontrado();
             	found = true;
             	return estudiante;
             } else if (estudiante.getApellidos().equals(palabraDeBusqueda)) {
+            	Formulario.estudianteEncontrado();
             	found = true;
             	return estudiante;
             } else if (estudiante.getCodigo() == Long.parseLong(palabraDeBusqueda)) {//Transformo String en long
+            	Formulario.estudianteEncontrado();
             	found = true;
             	return estudiante;
             } else if (estudiante.getCorreo().equals(palabraDeBusqueda)) {
+            	Formulario.estudianteEncontrado();
             	found = true;
             	return estudiante;
             }
-        }
+        }//close for
 
         if (!found) {
         	String nuevaPalabraDeBusqueda = Formulario.reintentarPalabraDeBusqueda();
@@ -179,6 +177,6 @@ public class Control {
         }
         
         return null;
-	}
+	}//close buscarEstudiante
 	
-}
+}//close Control
