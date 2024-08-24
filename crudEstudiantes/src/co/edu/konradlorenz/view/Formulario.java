@@ -40,7 +40,7 @@ public class Formulario {
 		return leer.nextLine();
 	}
 	
-	public static byte pedirNumeroMatriculo(){
+	public static byte pedirNumeroMatricula(){
 		System.out.println("Ingrese el número de matrícula del estudiante: ");
 		return leer.nextByte();
 	}
@@ -51,6 +51,7 @@ public class Formulario {
 	
 	public static int pedirEntero(String numero) {//Mandatory pedirEntero(String):int;
 		System.out.println("Selecciona el número del estudiante: ");
+		//WTF No entiendo 🤡
 		//TODO:Método para mostrar la lista de estudiantes.
 		return leer.nextInt();
 	}
