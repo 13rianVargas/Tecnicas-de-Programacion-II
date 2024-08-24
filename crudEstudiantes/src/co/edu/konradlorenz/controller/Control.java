@@ -9,13 +9,14 @@ public class Control {
 	
 	// - // - // Objects // - // - //
 	protected Estudiante estudiante = new Estudiante();
-	//protected Formulario formulario = new Formulario(); //Static then no longer useful//
+	//protected Formulario formulario = new Formulario(); //Static then no longer useful
 	private ArrayList<Estudiante> listaDeEstudiantes = new ArrayList<>();
 	
 	
 	// - // - // Methods // - // - //
 	public void run() {
 		//TODO: Crear la lista de pasos que realiza el Control.
+		//TODO: Regresar al menú principal.
 		
 		//0. Show menu
 		byte option;
@@ -31,7 +32,10 @@ public class Control {
 			
 			for (Estudiante estudiante : listaDeEstudiantes) {
 	            System.out.println(estudiante);//Puede que toque usar el toString
+	            //TODO: No sysos
 	        }
+			
+			option = 0;//Reinicia option
 			
 			break;
 		case 2://[2] Nuevo estudiante
@@ -50,17 +54,76 @@ public class Control {
 			//Guarda el nuevoEstudiante en la listaDeEstudiantes
 			listaDeEstudiantes.add(nuevoEstudiante);
 			
+			option = 0;//Reinicia option
+			
 			break;
 		case 3://[3] Modificar estudiante
+			
+			String palabraDeBusqueda = Formulario.pedirPalabraDeBusqueda();
+			Estudiante estudianteModificar = buscarEstudiante(palabraDeBusqueda);
+			
+			String nuevoAtributo = Formulario.pedirNuevoAtributo();
+			
+			option = 0;//Reinicia option
+			
+			do {//Ciclo para verificar que option sea una opción valida. 
+				option = Formulario.menuModificar();
+			} while (option != 1 && option != 2 && option != 3 &&  option != 4 && option != 5 && option != 6 && option != 7 && option != 8);
+			
+			switch (option) {
+			case 1:
+				estudianteModificar.setNombres(nuevoAtributo);
+				Formulario.cambioAtributoExitoso();
+				break;
+			case 2:
+				estudianteModificar.setApellidos(nuevoAtributo);
+				Formulario.cambioAtributoExitoso();
+				break;
+			case 3:
+				estudianteModificar.setCodigo(Long.parseLong(nuevoAtributo));//Transformo String en long
+				Formulario.cambioAtributoExitoso();
+				break;
+			case 4:
+				estudianteModificar.setEdad(Byte.parseByte(nuevoAtributo));//Transformo String en byte
+				Formulario.cambioAtributoExitoso();
+				break;
+			case 5:
+				estudianteModificar.setPrograma(nuevoAtributo);
+				Formulario.cambioAtributoExitoso();
+				break;
+			case 6:
+				estudianteModificar.setCorreo(nuevoAtributo);
+				Formulario.cambioAtributoExitoso();
+				break;
+			case 7:
+				estudianteModificar.setNumeroMatricula(Byte.parseByte(nuevoAtributo));//Transformo String en byte
+				Formulario.cambioAtributoExitoso();
+				break;
+			case 8:
+				
+				break;
+			}
+			
+			option = 0;//Reinicia option
 			
 			break;
 		case 4://[4] Eliminar estudiante
 			
+			palabraDeBusqueda = Formulario.pedirPalabraDeBusqueda();
+			Estudiante estudianteEliminar = buscarEstudiante(palabraDeBusqueda);
+			
+			listaDeEstudiantes.remove(estudianteEliminar);
+			
+			Formulario.eliminarEstudianteExitoso();
+			
+			option = 0;//Reinicia option
+			
 			break;
 		case 5://[5] Salir
 			
-			break;
-		default:
+			Formulario.salir();
+			
+			option = 0;//Reinicia option
 			
 			break;
 		}
@@ -88,6 +151,34 @@ public class Control {
 		//10. 
 		//int index = Formulario.pedirEntero("");
 		//listaDeEstudiantes.get(index);
+	}
+	
+	public Estudiante buscarEstudiante(String palabraDeBusqueda){
+		
+		boolean found = false;
+		
+		for (Estudiante estudiante : listaDeEstudiantes) {
+            if (estudiante.getNombres().equals(palabraDeBusqueda)) {
+            	found = true;
+            	return estudiante;
+            } else if (estudiante.getApellidos().equals(palabraDeBusqueda)) {
+            	found = true;
+            	return estudiante;
+            } else if (estudiante.getCodigo() == Long.parseLong(palabraDeBusqueda)) {//Transformo String en long
+            	found = true;
+            	return estudiante;
+            } else if (estudiante.getCorreo().equals(palabraDeBusqueda)) {
+            	found = true;
+            	return estudiante;
+            }
+        }
+
+        if (!found) {
+        	String nuevaPalabraDeBusqueda = Formulario.reintentarPalabraDeBusqueda();
+            return buscarEstudiante(nuevaPalabraDeBusqueda);//Vuelve a llamar a buscar estudiante.
+        }
+        
+        return null;
 	}
 	
 }
