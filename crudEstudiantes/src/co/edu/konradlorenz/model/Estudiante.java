@@ -104,8 +104,8 @@ public class Estudiante {
 	// - // - // toString // - // - //
 	@Override
 	public String toString() {
-		return "\nEstudiante [nombres=" + nombres + ", apellidos=" + apellidos + ", codigo=" + codigo + ", edad=" + edad
-				+ ", programa=" + programa + ", correo=" + correo + ", numeroMatricula=" + numeroMatricula + "]\n";
+		return "\n »»» // Nombres: " + nombres + " // Apellidos: " + apellidos + " // Código: " + codigo + " // Edad: " + edad
+				+ " años // Programa: " + programa + " // Correo: " + correo + " // Número de Matrícula: " + numeroMatricula + " // «««\n";
 	}
 	
 	

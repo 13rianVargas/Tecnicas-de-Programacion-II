@@ -11,17 +11,18 @@ public class Control {
 	protected Estudiante estudiante = new Estudiante();
 	//protected Formulario formulario = new Formulario(); //Static then no longer useful
 	private ArrayList<Estudiante> listaDeEstudiantes = new ArrayList<>();
-	private static byte option;
 	
 	
 	// - // - // Methods // - // - //
 	public void run() {
 		
 		//0. Show menu
-		option = menu();
+		menu();
 
-		//1. Using the option in a switch case
-		option = switch1(option);
+		//1. Use option in switch
+		//switch1(option);
+		
+		//2. Execute cases
 		
 	}//close run
 	
@@ -33,11 +34,12 @@ public class Control {
 			option = Formulario.mostrarMenu();
 		} while (option != 1 && option != 2 && option != 3 &&  option != 4 && option != 5);
 		
-		return option;
+		return switch1(option);
 		
 	}//close menu
 	
 	public byte switch1(byte option) {
+		long codigoDeBusqueda;
 		switch (option) {
 		case 1://[1] Mostrar todos los estudiantes
 			
@@ -74,16 +76,16 @@ public class Control {
 			return option = menu();//Vuelve al menú
 		case 3://[3] Modificar estudiante
 			
-			String palabraDeBusqueda = Formulario.pedirPalabraDeBusqueda();
-			Estudiante estudianteModificar = buscarEstudiante(palabraDeBusqueda);
-			
-			String nuevoAtributo = Formulario.pedirNuevoAtributo();
+			codigoDeBusqueda = Formulario.pedirCodigoDeBusqueda();
+			Estudiante estudianteModificar = buscarEstudiante(codigoDeBusqueda);
 			
 			option = 0;//Reinicia option
 			
 			do {//Ciclo para verificar que option sea una opción valida. 
 				option = Formulario.menuModificar();
 			} while (option != 1 && option != 2 && option != 3 &&  option != 4 && option != 5 && option != 6 && option != 7 && option != 8);
+			
+			String nuevoAtributo = Formulario.pedirNuevoAtributo();
 			
 			switch (option) {
 			case 1:
@@ -123,8 +125,8 @@ public class Control {
 			return option = menu();//Vuelve al menú
 		case 4://[4] Eliminar estudiante
 			
-			palabraDeBusqueda = Formulario.pedirPalabraDeBusqueda();
-			Estudiante estudianteEliminar = buscarEstudiante(palabraDeBusqueda);
+			codigoDeBusqueda = Formulario.pedirCodigoDeBusqueda();
+			Estudiante estudianteEliminar = buscarEstudiante(codigoDeBusqueda);
 			
 			listaDeEstudiantes.remove(estudianteEliminar);
 			
@@ -147,24 +149,12 @@ public class Control {
 	}
 	
 	
-	public Estudiante buscarEstudiante(String palabraDeBusqueda){
+	public Estudiante buscarEstudiante(long codigoDeBusqueda){
 		
 		boolean found = false;
 		
-		for (Estudiante estudiante : listaDeEstudiantes) {
-            if (estudiante.getNombres().equals(palabraDeBusqueda)) {
-            	Formulario.estudianteEncontrado();
-            	found = true;
-            	return estudiante;
-            } else if (estudiante.getApellidos().equals(palabraDeBusqueda)) {
-            	Formulario.estudianteEncontrado();
-            	found = true;
-            	return estudiante;
-            } else if (estudiante.getCodigo() == Long.parseLong(palabraDeBusqueda)) {//Transformo String en long
-            	Formulario.estudianteEncontrado();
-            	found = true;
-            	return estudiante;
-            } else if (estudiante.getCorreo().equals(palabraDeBusqueda)) {
+		for (Estudiante estudiante : listaDeEstudiantes) {		
+			if (estudiante.getCodigo() == codigoDeBusqueda) {
             	Formulario.estudianteEncontrado();
             	found = true;
             	return estudiante;
@@ -172,8 +162,8 @@ public class Control {
         }//close for
 
         if (!found) {
-        	String nuevaPalabraDeBusqueda = Formulario.reintentarPalabraDeBusqueda();
-            return buscarEstudiante(nuevaPalabraDeBusqueda);//Vuelve a llamar a buscar estudiante.
+        	long nuevaCodigoDeBusqueda = Formulario.reintentarCodigoDeBusqueda();
+            return buscarEstudiante(nuevaCodigoDeBusqueda);//Vuelve a llamar a buscar estudiante.
         }
         
         return null;

@@ -82,22 +82,23 @@ public class Formulario {
 				+ "»»»                                             «««\n");
 	}
 	
-	public static String pedirPalabraDeBusqueda(){
+	public static long pedirCodigoDeBusqueda(){
 		System.out.println("\n"
 				+ "»»»                                             «««\n"
-				+ "»»»      Ingrese un atributo de busqueda:       «««\n"
-				+ "»»»      (Nombres/Apellidos/Código/Correo)      «««\n"
+				+ "»»»      Ingrese el código del estudiante:      «««\n"
 				+ "»»»                                             «««\n");
-		return leer.nextLine();
+		long codigo = leer.nextLong();
+		return codigo;
 	}
 	
-	public static String reintentarPalabraDeBusqueda(){
+	public static long reintentarCodigoDeBusqueda(){
 		System.out.println("\n"
 				+ "»»»                                             «««\n"
-				+ "»»» Ingrese un atributo de busqueda diferente:  «««\n"
-				+ "»»»      (Nombres/Apellidos/Código/Correo)      «««\n"
+				+ "»»»             Ingrese nuevamente              «««\n"
+				+ "»»»          el código del estudiante:          «««\n"
 				+ "»»»                                             «««\n");
-		return leer.nextLine();
+		long codigo = leer.nextLong();
+		return codigo;
 	}
 	
 	public static void estudianteEncontrado(){
@@ -155,7 +156,7 @@ public class Formulario {
 	public static void salir(){
 		System.out.println("\n"
 				+ "»»»                                             «««\n"
-				+ "»»»           Saliendo del sistema...           «««\n"
+				+ "»»»              Fin del programa               «««\n"
 				+ "»»»                                             «««\n");
 	}
 }
