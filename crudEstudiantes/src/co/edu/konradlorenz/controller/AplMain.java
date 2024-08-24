@@ -4,7 +4,7 @@ public class AplMain {
 
 	public static void main(String[] args) {
 		
-		// - // - // Attributes // - // - //
+		// - // - // Objetcs // - // - //
 		Control control = new Control();
 		
 		

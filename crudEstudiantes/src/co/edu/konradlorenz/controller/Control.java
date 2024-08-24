@@ -22,7 +22,7 @@ public class Control {
 		//1. Use option in switch
 		//switch1(option);
 		
-		//2. Execute cases
+		//2. Execute cases of switch1
 		
 	}//close run
 	
