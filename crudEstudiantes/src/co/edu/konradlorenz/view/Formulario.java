@@ -34,7 +34,7 @@ public class Formulario {
 		System.out.println(estudianteToString);
 	}
 	
-	public static String pedirNombres(/*/String nombres/*/){//Mandatory pedirString(String):String;
+	public static String pedirNombres(/*/TODO: String nombres/*/){//Mandatory pedirString(String):String;
 		System.out.println("Ingrese los nombres del estudiante: ");
 		return leer.nextLine();
 	}
