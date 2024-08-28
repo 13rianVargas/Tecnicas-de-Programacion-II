@@ -6,10 +6,10 @@ public class Estudiante {
 	private String nombres; //Mandatory
 	private String apellidos;
 	private long codigo; //Mandatory
-	private byte edad;
+	private int edad;
 	private String programa; //Mandatory
 	private String correo;
-	private byte numeroMatricula;
+	private int numeroMatricula;
 	
 	
 	// - // - // Constructors // - // - //
@@ -61,12 +61,12 @@ public class Estudiante {
 	}
 
 
-	public byte getEdad() {
+	public int getEdad() {
 		return edad;
 	}
 
 
-	public void setEdad(byte edad) {
+	public void setEdad(int edad) {
 		this.edad = edad;
 	}
 
@@ -91,12 +91,12 @@ public class Estudiante {
 	}
 
 
-	public byte getNumeroMatricula() {
+	public int getNumeroMatricula() {
 		return numeroMatricula;
 	}
 
 
-	public void setNumeroMatricula(byte numeroMatricula) {
+	public void setNumeroMatricula(int numeroMatricula) {
 		this.numeroMatricula = numeroMatricula;
 	}
 

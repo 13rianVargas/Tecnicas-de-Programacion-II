@@ -33,45 +33,23 @@ public class Formulario {
 		System.out.println(estudianteToString);
 	}
 
-	public static String pedirNombres(/*/TODO: String nombres/*/) {// Mandatory pedirString(String):String;
-		System.out.println("Ingrese los nombres del estudiante: ");
+	public static String pedirString(String opcionDato) {// Mandatory pedirString(String):String;
+		System.out.println("Ingrese " + opcionDato + " del estudiante: ");
 		return leer.nextLine();
 	}
 
-	public static String pedirApellidos() {
-		System.out.println("Ingrese los apellidos del estudiante: ");
-		return leer.nextLine();
-	}
-
-	public static long pedirCodigo() {// Mandatory pedirLong():long;
-		System.out.println("Ingrese el código del estudiante: ");
-		long codigo = leer.nextLong();
+	public static long pedirLong(String opcionDato) {// Mandatory pedirLong():long;
+		System.out.println("Ingrese " + opcionDato + " del estudiante: ");
+		long dato = leer.nextLong();
 		leer.nextLine();// Limpia Buffer
-		return codigo;
+		return dato;
 	}
 
-	public static byte pedirEdad() {
-		System.out.println("Ingrese la edad del estudiante: ");
-		byte edad = leer.nextByte();
+	public static int pedirEntero(String opcionDato) {
+		System.out.println("Ingrese " + opcionDato + " del estudiante: ");
+		int dato = leer.nextInt();
 		leer.nextLine();// Limpia Buffer
-		return edad;
-	}
-
-	public static String pedirPrograma() {
-		System.out.println("Ingrese el programa del estudiante: ");
-		return leer.nextLine();
-	}
-
-	public static String pedirCorreo() {
-		System.out.println("Ingrese el correo del estudiante: ");
-		return leer.nextLine();
-	}
-
-	public static byte pedirNumeroMatricula() {
-		System.out.println("Ingrese el número de matrícula del estudiante: ");
-		byte matricula = leer.nextByte();
-		leer.nextLine();// Limpia Buffer
-		return matricula;
+		return dato;
 	}
 
 	public static void estudianteCreadoExitoso() {

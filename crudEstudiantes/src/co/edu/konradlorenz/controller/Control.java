@@ -58,13 +58,13 @@ public class Control {
 			Estudiante nuevoEstudiante = new Estudiante();//Crea nuevoEstudiante
 			
 			//Pide datos del nuevoEstudiante
-			nuevoEstudiante.setNombres(Formulario.pedirNombres(/*/null/*/));//TODO: Resolver el null
-			nuevoEstudiante.setApellidos(Formulario.pedirApellidos());
-			nuevoEstudiante.setCodigo(Formulario.pedirCodigo());
-			nuevoEstudiante.setEdad(Formulario.pedirEdad());
-			nuevoEstudiante.setPrograma(Formulario.pedirPrograma());
-			nuevoEstudiante.setCorreo(Formulario.pedirCorreo());
-			nuevoEstudiante.setNumeroMatricula(Formulario.pedirNumeroMatricula());
+			nuevoEstudiante.setNombres(Formulario.pedirString("nombres"));
+			nuevoEstudiante.setApellidos(Formulario.pedirString("apellidos"));
+			nuevoEstudiante.setCodigo(Formulario.pedirLong("código"));
+			nuevoEstudiante.setEdad(Formulario.pedirEntero("edad"));
+			nuevoEstudiante.setPrograma(Formulario.pedirString("programa"));
+			nuevoEstudiante.setCorreo(Formulario.pedirString("correo"));
+			nuevoEstudiante.setNumeroMatricula(Formulario.pedirEntero("número de matrícula"));
 			
 			//Guarda el nuevoEstudiante en la listaDeEstudiantes
 			listaDeEstudiantes.add(nuevoEstudiante);
@@ -149,7 +149,7 @@ public class Control {
 	}
 	
 	
-	public Estudiante buscarEstudiante(long codigoDeBusqueda){
+	private Estudiante buscarEstudiante(long codigoDeBusqueda){
 		
 		boolean found = false;
 		
