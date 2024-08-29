@@ -1,8 +1,0 @@
-INDEX VERSION 1.134+/Users/brian/Documents/GitHub/Tecnicas-de-Programacion-II/.metadata/.plugins/org.eclipse.jdt.core
-4293560026.index
-752741918.index
-4142933197.index
-3541420791.index
-1865797976.index
-725957003.index
-1752000070.index
