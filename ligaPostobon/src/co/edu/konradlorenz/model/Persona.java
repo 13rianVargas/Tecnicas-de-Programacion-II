@@ -7,19 +7,17 @@ public class Persona{
 
 	
 	// - // - // - // Constructors //- // - // - //
-	
-	public Persona() {
+	public Persona() {//VACIO
 		super();
 	}
 	
-	public Persona(String nombre) {
+	public Persona(String nombre) {//PERSONA
 		super();
 		this.nombre = nombre;
 	}
 
 	
 	// - // - // - // Getter & Setters //- // - // - //
-
 	public String getNombre() {
 		return nombre;
 	}

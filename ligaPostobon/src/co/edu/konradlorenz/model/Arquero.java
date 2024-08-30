@@ -3,34 +3,37 @@ package co.edu.konradlorenz.model;
 public class Arquero extends Futbolista{
 	
 	// - // - // - // Attributes //- // - // - //
-	
 	private String colorGuantes;
 
 	// - // - // - // Constructors //- // - // - //
-
-	public Arquero() {
+	public Arquero() {//VACIO
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
-	public Arquero(byte dorsal, String equipo) {
+	public Arquero(String nombre) {//PERSONA
+		super(nombre);
+	}
+	
+	public Arquero(byte dorsal, String equipo) {//FUTBOLISTA
 		super(dorsal, equipo);
-		// TODO Auto-generated constructor stub
 	}
 	
-	public Arquero(String nombre) {
-		super(nombre);
-		// TODO Auto-generated constructor stub
-	}
-
-	public Arquero(String nombre, String colorGuantes) {
-		super(nombre);
+	/*/Descomentar para ver error
+	 public Arquero(String colorGuantes) {//ARQUERO
+	
+		super();
 		this.colorGuantes = colorGuantes;
 	}
+	//*/
 	
-	//FALTA UNO XD
+	public Arquero(String nombre, byte dorsal, String equipo) {//PERSONA + FUTBOLISTA
+		super(nombre, dorsal, equipo);
+	}
 	
-	
+	public Arquero(String nombre, byte dorsal, String equipo, String colorGuantes) {//PERSONA + FUTBOLISTA + ARQUERO
+		super(nombre, dorsal, equipo);
+		this.colorGuantes = colorGuantes;
+	}
 	
 	
 	// - // - // - // Getters & Setters //- // - // - //
