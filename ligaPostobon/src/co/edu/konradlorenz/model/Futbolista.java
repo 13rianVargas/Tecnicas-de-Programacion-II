@@ -27,8 +27,27 @@ public class Futbolista extends Persona{
 		this.dorsal = dorsal;
 		this.equipo = equipo;
 	}
+
+	
+	// - // - // - // Getters & Setters //- // - // - //
+	public byte getDorsal() {
+		return dorsal;
+	}
+
+	public void setDorsal(byte dorsal) {
+		this.dorsal = dorsal;
+	}
+
+	public String getEquipo() {
+		return equipo;
+	}
+
+	public void setEquipo(String equipo) {
+		this.equipo = equipo;
+	}
 	
 	
 	// - // - // - // Methods //- // - // - //
-	
+		
+		
 }

@@ -18,7 +18,7 @@ public class Arquero extends Futbolista{
 		super(dorsal, equipo);
 	}
 	
-	/*/Descomentar para ver error
+	/*/ <-- Quitar asterisco para ver error
 	 public Arquero(String colorGuantes) {//ARQUERO
 	
 		super();
@@ -34,10 +34,20 @@ public class Arquero extends Futbolista{
 		super(nombre, dorsal, equipo);
 		this.colorGuantes = colorGuantes;
 	}
-	
+
 	
 	// - // - // - // Getters & Setters //- // - // - //
+	public String getColorGuantes() {
+		return colorGuantes;
+	}
+
+	public void setColorGuantes(String colorGuantes) {
+		this.colorGuantes = colorGuantes;
+	}
+	
 	
 	// - // - // - // Methods //- // - // - //
+	
+	
 	
 }
