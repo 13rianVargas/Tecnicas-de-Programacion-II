@@ -11,10 +11,21 @@ public class Controlador {
 
 	public void run() {
 		//1. Pedir datos
+		while(true) {
+			String Continuar = vista.menuPrincipal().toUpperCase();
+			if(Continuar.equals("Y")){
+				break;
+			}else if(Continuar.equals("N")) {
+				vista.salida();
+				System.exit(0);
+			}
+		}
+		
+		
 		String tipoFigura;
 		
 		while(true) {
-			String pedirTipoFigura = vista.pedirTipoFigura();
+			String pedirTipoFigura = vista.pedirTipoFigura().toUpperCase();
 			if(pedirTipoFigura.equals("R")||pedirTipoFigura.equals("C")) {
 				tipoFigura = pedirTipoFigura;
 				break;
@@ -25,20 +36,19 @@ public class Controlador {
 		//2. Pedir, calcular y mostrar datos
 		switch (tipoFigura) {
 		case "R":
-			rectangulo.setLado1(vista.pedirDouble());
-			rectangulo.setLado2(vista.pedirDouble());
+			rectangulo.setLado1(vista.pedirLado1());
+			rectangulo.setLado2(vista.pedirLado2());
 			
 			vista.mostrarArea(rectangulo.Area());
 			vista.mostrarPerimetro(rectangulo.Perimetro());
 			break;
 			
 		case "C":
-			circulo.setRadio(vista.pedirDouble());
+			circulo.setRadio(vista.pedirRadio());
 			
 			vista.mostrarArea(circulo.Area());
 			vista.mostrarPerimetro(circulo.Perimetro());
 			break;
 		}
-		
 	}
 }

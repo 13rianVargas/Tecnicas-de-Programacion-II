@@ -41,9 +41,9 @@ public class Circulo extends Forma{
 	
 	// - // - // - // Methods // - // - // - //
 		public double Area() {
-			return Math.PI*(radio*radio);
+			return Math.round(Math.PI*Math.pow(radio,2));
 		}
 		public double Perimetro() {
-			return 2*Math.PI*radio;
+			return Math.round(2*Math.PI*radio);
 		}	
 }
