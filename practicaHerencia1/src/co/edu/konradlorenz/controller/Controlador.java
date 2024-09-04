@@ -1,6 +1,7 @@
 package co.edu.konradlorenz.controller;
 
 import co.edu.konradlorenz.model.Circulo;
+import co.edu.konradlorenz.model.Forma;
 import co.edu.konradlorenz.model.Rectangulo;
 import co.edu.konradlorenz.view.Vista;
 
@@ -8,6 +9,7 @@ public class Controlador {
 	Vista vista = new Vista();
 	Rectangulo rectangulo = new Rectangulo();
 	Circulo circulo = new Circulo();
+	Forma forma = new Forma();
 
 	public void run() {
 		//1. Pedir datos
@@ -38,16 +40,22 @@ public class Controlador {
 		case "R":
 			rectangulo.setLado1(vista.pedirLado1());
 			rectangulo.setLado2(vista.pedirLado2());
+			forma.setX(vista.pedirX());
+			forma.setY(vista.pedirY());
 			
 			vista.mostrarArea(rectangulo.Area());
 			vista.mostrarPerimetro(rectangulo.Perimetro());
+			vista.mostrarUbicacion(forma.getX(),forma.getY());
 			break;
 			
 		case "C":
 			circulo.setRadio(vista.pedirRadio());
+			forma.setX(vista.pedirX());
+			forma.setY(vista.pedirY());
 			
 			vista.mostrarArea(circulo.Area());
 			vista.mostrarPerimetro(circulo.Perimetro());
+			vista.mostrarUbicacion(forma.getX(),forma.getY());
 			break;
 		}
 	}

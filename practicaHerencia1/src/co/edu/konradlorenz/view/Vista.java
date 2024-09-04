@@ -39,6 +39,30 @@ public class Vista {
 		String tipoFigura = sc.nextLine();
 		return tipoFigura;
 	}
+	public double pedirX() {
+		System.out.print("\n"
+				+ " <> <> <> <> <> <> <> <> <> <> <> <> <>\n"
+				+ " <>                                  <>\n"
+				+ " <>       Ingrese la ubicación       <>\n"
+				+ " <>       en X del rectángulo        <>\n"
+				+ " <>                                  <>\n"
+				+ " <> <> <> <> <> <> <> <> <> <> <> <> <>\n");
+		double numero = sc.nextDouble();
+		sc.nextLine();//sc clean
+		return numero;
+	}
+	public double pedirY() {
+		System.out.print("\n"
+				+ " <> <> <> <> <> <> <> <> <> <> <> <> <>\n"
+				+ " <>                                  <>\n"
+				+ " <>       Ingrese la ubicación       <>\n"
+				+ " <>       en Y del rectángulo        <>\n"
+				+ " <>                                  <>\n"
+				+ " <> <> <> <> <> <> <> <> <> <> <> <> <>\n");
+		double numero = sc.nextDouble();
+		sc.nextLine();//sc clean
+		return numero;
+	}
 	public double pedirLado1() {
 		System.out.print("\n"
 				+ " <> <> <> <> <> <> <> <> <> <> <> <> <>\n"
@@ -81,7 +105,12 @@ public class Vista {
 		
 	}
 	public void mostrarPerimetro(double perimetro) {
-		System.out.print("\n        El perímetro es: " + perimetro + "\n\n");
+		System.out.print("        El perímetro es: " + perimetro + "\n");
+		
+	}
+	public void mostrarUbicacion(double x, double y) {
+		System.out.print("     Ubicación en X: " + x + ", Y: " + y + "\n\n");
 		System.out.print(" <> <> <> <> <> <> <> <> <> <> <> <> <>");
+		
 	}
 }
