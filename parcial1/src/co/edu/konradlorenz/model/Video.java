@@ -37,7 +37,7 @@ public class Video {
 
 	@Override
 	public String toString() {
-		return "\n[Nombre => " + nombre + ", Canal => " + canal + ", Enlace => " + enlace + "]";
+		return "\n<Video> : [Nombre => " + nombre + ", Canal => " + canal + ", Enlace => " + enlace + "]";
 	}
 
 }

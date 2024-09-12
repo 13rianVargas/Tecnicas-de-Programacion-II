@@ -22,6 +22,6 @@ public class VideoJuego extends Video{
 
 	@Override
 	public String toString() {
-		return "\n[Nombre => " + getNombre() + ", Canal => " + getCanal() + ", Enlace => " + getEnlace() + ", Tipo de video => " + tipoVideo + "]";
+		return "\n<Video de Videojuegos> : [Nombre => " + getNombre() + ", Canal => " + getCanal() + ", Enlace => " + getEnlace() + ", Tipo de video => " + tipoVideo + "]";
 	}
 }

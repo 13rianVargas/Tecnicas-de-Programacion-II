@@ -87,7 +87,7 @@ public class Controlador {
 							nuevoVideoVideojuegos(nombre, canal, enlace, tipoVideo);
 							break;
 						case 3:
-							
+							//regresa al men´ú principal
 							break;
 					
 						default:
