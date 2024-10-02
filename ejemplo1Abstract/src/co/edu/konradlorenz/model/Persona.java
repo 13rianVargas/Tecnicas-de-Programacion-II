@@ -33,15 +33,15 @@ public abstract class Persona {
 	
 	@Override
 	public String toString() {
-		return "Persona [nombre=" + nombre + ", cedula=" + cedula + "]";
+		return "<> | Nombre: " + nombre + ", Cédula: " + cedula;
 	}
 
-	public void registrarIngreso(Date time) {
-		
+	public String registrarEntrada(Date time) {
+		return this.nombre + "registró su entrada [" + time.toString() + "]";
 	}
 	
-	public void registrarSalida(Date time) {
-		
+	public String  registrarSalida(Date time) {
+		return this.nombre + "registró su salida [" + time.toString() + "]";
 	}
 	
 }
