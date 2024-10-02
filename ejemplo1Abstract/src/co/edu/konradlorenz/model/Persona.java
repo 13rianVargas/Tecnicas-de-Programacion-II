@@ -1,7 +1,5 @@
 package co.edu.konradlorenz.model;
 
-import java.time.LocalDateTime;
-
 public abstract class Persona {
 	private String nombre;
 	private String cedula;
