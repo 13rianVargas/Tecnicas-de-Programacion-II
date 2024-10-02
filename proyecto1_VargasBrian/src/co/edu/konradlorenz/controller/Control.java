@@ -35,7 +35,6 @@ public class Control {
     public void crearJugadorConConstructor() {
     	/*
     	String n,f;
-    	
     	long id;
     	
     	n = Ventana.pedirString("nombre");
@@ -45,17 +44,18 @@ public class Control {
     	objJugador = new Jugador (n,id,f);
     	//*/
     	
+    	//*
     	objJugador = new Jugador (Ventana.pedirString("nombre"),Long.parseLong(Ventana.pedirString("identificación")),Ventana.pedirString("fecha"));
     	objEstacion.setListaJugadores(objJugador);
+    	//*/
     }
     
     public void crearJugadorConSetter() {
-    	String n, f;
-    	long id;
+    	objJugador = new Jugador ();
     	
-    	
-    	
-    	objJugador = new Jugador();
+    	objJugador.setNombre(Ventana.pedirString("nombre"));
+    	objJugador.setIdentificacion(Long.parseLong(Ventana.pedirString("identificación")));
+    	objJugador.setFecha(Ventana.pedirString("fecha"));
     	
     }
 }
