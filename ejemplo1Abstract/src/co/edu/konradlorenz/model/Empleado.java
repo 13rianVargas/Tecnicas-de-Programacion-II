@@ -4,8 +4,8 @@ public interface Empleado {
 	
 	public final long SMMLV = 1300000;
 
-	public String cobrarSueldo(long SMMLV);
-	public String pagarImpuestos();
+	public boolean cobrarSueldo();
+	public long pagarImpuestos();
 	public String asistirAReunion();
 	
 }

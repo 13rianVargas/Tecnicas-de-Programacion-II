@@ -34,12 +34,8 @@ public abstract class Persona {
 		return "<> | Nombre: " + nombre + ", Cédula: " + cedula;
 	}
 
-	public String registrarEntrada(String actualTime) {
-		return "\n <> " + this.nombre + " registró su entrada [" + actualTime + "]";
-	}
+	public abstract void registrarEntrada(String actualTime);
 	
-	public String  registrarSalida(String actualTime) {
-		return "\n <> " + this.nombre + " registró su salida [" + actualTime + "]";
-	}
+	public abstract void  registrarSalida(String actualTime);
 	
 }

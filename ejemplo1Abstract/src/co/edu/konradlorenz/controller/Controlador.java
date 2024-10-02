@@ -357,10 +357,12 @@ public class Controlador {
 						Vista.mostrarMensaje(listaEstudiantes.get(index).entregarTrabajo());
 						break;
 					case 5:
-						Vista.mostrarMensaje(listaEstudiantes.get(index).registrarEntrada(actualTime));
+						listaEstudiantes.get(index).registrarEntrada(actualTime);
+						Vista.mostrarMensaje("Entrada registrada ["+ actualTime +"]");
 						break;
 					case 6:
-						Vista.mostrarMensaje(listaEstudiantes.get(index).registrarSalida(actualTime));
+						listaEstudiantes.get(index).registrarSalida(actualTime);
+						Vista.mostrarMensaje("Salida registrada ["+ actualTime +"]");
 						break;
 					case 0:
 						Vista.mostrarMensaje(" <> FIN <> ");
@@ -389,19 +391,22 @@ public class Controlador {
 						Vista.mostrarMensaje(listaProfesores.get(index).dictarClase());
 						break;
 					case 2:
-						Vista.mostrarMensaje(listaProfesores.get(index).cobrarSueldo(Empleado.SMMLV));
+						String mensaje = listaProfesores.get(index).cobrarSueldo() ? "Se cobró el sueldo." : "No se cobró el sueldo.";
+						Vista.mostrarMensaje(mensaje);
 						break;
 					case 3:
-						Vista.mostrarMensaje(listaProfesores.get(index).pagarImpuestos());
+						Vista.mostrarMensaje("Se pagó " + listaProfesores.get(index).pagarImpuestos() + " en impuestos.");
 						break;
 					case 4:
 						Vista.mostrarMensaje(listaProfesores.get(index).asistirAReunion());
 						break;
 					case 5:
-						Vista.mostrarMensaje(listaProfesores.get(index).registrarEntrada(actualTime));
+						listaEstudiantes.get(index).registrarEntrada(actualTime);
+						Vista.mostrarMensaje("Entrada registrada ["+ actualTime +"]");
 						break;
 					case 6:
-						Vista.mostrarMensaje(listaProfesores.get(index).registrarSalida(actualTime));
+						listaEstudiantes.get(index).registrarSalida(actualTime);
+						Vista.mostrarMensaje("Salida registrada ["+ actualTime +"]");
 						break;
 					case 0:
 						Vista.mostrarMensaje(" <> FIN <> ");
@@ -430,10 +435,11 @@ public class Controlador {
 						Vista.mostrarMensaje(listaDecanos.get(index).dictarClase());
 						break;
 					case 2:
-						Vista.mostrarMensaje(listaDecanos.get(index).cobrarSueldo(Empleado.SMMLV));
+						String mensaje = listaDecanos.get(index).cobrarSueldo() ? "Se cobró el sueldo." : "No se cobró el sueldo.";
+						Vista.mostrarMensaje(mensaje);
 						break;
 					case 3:
-						Vista.mostrarMensaje(listaDecanos.get(index).pagarImpuestos());
+						Vista.mostrarMensaje("Se pagó " + listaDecanos.get(index).pagarImpuestos() + " en impuestos.");
 						break;
 					case 4:
 						Vista.mostrarMensaje(listaDecanos.get(index).asistirAReunion());
@@ -442,10 +448,12 @@ public class Controlador {
 						Vista.mostrarMensaje(listaDecanos.get(index).presentarReportes());
 						break;
 					case 6:
-						Vista.mostrarMensaje(listaDecanos.get(index).registrarEntrada(actualTime));
+						listaEstudiantes.get(index).registrarEntrada(actualTime);
+						Vista.mostrarMensaje("Entrada registrada ["+ actualTime +"]");
 						break;
 					case 7:
-						Vista.mostrarMensaje(listaDecanos.get(index).registrarSalida(actualTime));
+						listaEstudiantes.get(index).registrarSalida(actualTime);
+						Vista.mostrarMensaje("Salida registrada ["+ actualTime +"]");
 						break;
 					case 0:
 						Vista.mostrarMensaje(" <> FIN <> ");
@@ -474,19 +482,22 @@ public class Controlador {
 						Vista.mostrarMensaje(listaPersonalDeSeguridad.get(index).disparar());
 						break;
 					case 2:
-						Vista.mostrarMensaje(listaPersonalDeSeguridad.get(index).cobrarSueldo(Empleado.SMMLV));
+						String mensaje = listaPersonalDeSeguridad.get(index).cobrarSueldo() ? "Se cobró el sueldo." : "No se cobró el sueldo.";
+						Vista.mostrarMensaje(mensaje);
 						break;
 					case 3:
-						Vista.mostrarMensaje(listaPersonalDeSeguridad.get(index).pagarImpuestos());
+						Vista.mostrarMensaje("Se pagó " + listaPersonalDeSeguridad.get(index).pagarImpuestos() + " en impuestos.");
 						break;
 					case 4:
 						Vista.mostrarMensaje(listaPersonalDeSeguridad.get(index).asistirAReunion());
 						break;
 					case 5:
-						Vista.mostrarMensaje(listaPersonalDeSeguridad.get(index).registrarEntrada(actualTime));
+						listaEstudiantes.get(index).registrarEntrada(actualTime);
+						Vista.mostrarMensaje("Entrada registrada ["+ actualTime +"]");
 						break;
 					case 6:
-						Vista.mostrarMensaje(listaPersonalDeSeguridad.get(index).registrarSalida(actualTime));
+						listaEstudiantes.get(index).registrarSalida(actualTime);
+						Vista.mostrarMensaje("Salida registrada ["+ actualTime +"]");
 						break;
 					case 0:
 						Vista.mostrarMensaje(" <> FIN <> ");

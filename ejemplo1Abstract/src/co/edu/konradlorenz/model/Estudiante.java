@@ -52,5 +52,15 @@ public class Estudiante extends Persona {
 	public String entregarTrabajo() {
 		return "\n <> El estudiante " + this.getNombre() + " entregó el trabajo.";
 	}
+
+	@Override
+	public void registrarEntrada(String actualTime) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void registrarSalida(String actualTime) {
+		// TODO Auto-generated method stub
+	}
 	
 }
