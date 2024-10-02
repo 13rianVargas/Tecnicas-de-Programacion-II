@@ -37,22 +37,22 @@ public class Profesor extends Persona implements Empleado{
 	}
 
 	public String dictarClase() {
-		return "El profesor " + this.getNombre() + "está dictando la clase.";
+		return "\n <> El profesor " + this.getNombre() + " está dictando la clase.";
 	}
 
 	@Override
 	public String cobrarSueldo(long SMMLV) {
-		return "El profesor " + this.getNombre() + "cobró el sueldo de [$" + SMMLV + "].";
+		return "\n <> El profesor " + this.getNombre() + " cobró el sueldo de [$" + SMMLV + "].";
 	}
 
 	@Override
 	public String pagarImpuestos() {
-		return "El profesor " + this.getNombre() + "pagó sus impuestos.";
+		return "\n <> El profesor " + this.getNombre() + " pagó sus impuestos.";
 	}
 
 	@Override
 	public String asistirAReunion() {
-		return "El profesor " + this.getNombre() + "asistió a la reunión de cierre de semestre.";
+		return "\n <> El profesor " + this.getNombre() + " asistió a la reunión de cierre de semestre.";
 	}
 	
 }

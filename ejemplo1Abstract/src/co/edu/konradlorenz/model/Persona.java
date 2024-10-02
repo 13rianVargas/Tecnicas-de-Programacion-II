@@ -1,6 +1,6 @@
 package co.edu.konradlorenz.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public abstract class Persona {
 	private String nombre;
@@ -36,12 +36,12 @@ public abstract class Persona {
 		return "<> | Nombre: " + nombre + ", Cédula: " + cedula;
 	}
 
-	public String registrarEntrada(Date time) {
-		return this.nombre + "registró su entrada [" + time.toString() + "]";
+	public String registrarEntrada(String actualTime) {
+		return "\n <> " + this.nombre + " registró su entrada [" + actualTime + "]";
 	}
 	
-	public String  registrarSalida(Date time) {
-		return this.nombre + "registró su salida [" + time.toString() + "]";
+	public String  registrarSalida(String actualTime) {
+		return "\n <> " + this.nombre + " registró su salida [" + actualTime + "]";
 	}
 	
 }

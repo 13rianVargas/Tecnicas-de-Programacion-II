@@ -29,6 +29,7 @@ public class Vista {
         		+ "   [3] Mostrar todas las personas. \n"
         		+ "   [4] Modificar persona. \n"
         		+ "   [5] Eliminar persona. \n"
+        		+ "   [6] Ejecutar acciones. \n"
         		+ "   [0] Salir. \n"
         		+ "    >> Ingrese una opción:");
     	
@@ -97,7 +98,7 @@ public class Vista {
     }
     
     public static byte mostrarAtributosDePersonalDeSeguridad() {
-    	System.out.print("\n <> <> <> Atributos de PersonalDeSeguridad <> <> <> \n"
+    	System.out.print("\n <> <> <> Atributos de Personal de Seguridad <> <> <> \n"
         		+ "   [1] Nombre. \n"
         		+ "   [2] Cédula. \n"
         		+ "   [3] Número de matrícula. \n"
@@ -108,6 +109,75 @@ public class Vista {
     	byte atributo = v.sc.nextByte();
         v.sc.nextLine();
         return atributo; 
+    }
+    
+    public static byte mostrarAccionesEstudiante() {
+    	System.out.print("\n <> <> <> Acciones de Estudiante <> <> <> \n"
+        		+ "   [1] Pagar matrícula. \n"
+        		+ "   [2] Asistir a clase. \n"
+        		+ "   [3] Realizar lectura. \n"
+        		+ "   [4] Entregar trabajo. \n"
+        		+ "   [5] Registrar ingreso. \n"
+        		+ "   [6] Registrar salida. \n"
+        		+ "   [0] Salir. \n"
+        		+ "    >> Ingrese una opción:");
+    	
+    	Vista v = new Vista();
+    	byte accion = v.sc.nextByte();
+        v.sc.nextLine();
+        return accion; 
+    }
+    
+    public static byte mostrarAccionesProfesor() {
+    	System.out.print("\n <> <> <> Acciones de Profesor <> <> <> \n"
+        		+ "   [1] Dictar clase. \n"
+        		+ "   [2] Cobrar sueldo. \n"
+        		+ "   [3] Pagar impuestos. \n"
+        		+ "   [4] Asistir a reunión. \n"
+        		+ "   [5] Registrar ingreso. \n"
+        		+ "   [6] Registrar salida. \n"
+        		+ "   [0] Salir. \n"
+        		+ "    >> Ingrese una opción:");
+    	
+    	Vista v = new Vista();
+    	byte accion = v.sc.nextByte();
+        v.sc.nextLine();
+        return accion; 
+    }
+    
+    public static byte mostrarAccionesDecano() {
+    	System.out.print("\n <> <> <> Acciones de Decano <> <> <> \n"
+        		+ "   [1] Dictar clase. \n"
+        		+ "   [2] Cobrar sueldo. \n"
+        		+ "   [3] Pagar impuestos. \n"
+        		+ "   [4] Asistir a reunión. \n"
+        		+ "   [5] Presentar reportes. \n"
+        		+ "   [6] Registrar ingreso. \n"
+        		+ "   [7] Registrar salida. \n"
+        		+ "   [0] Salir. \n"
+        		+ "    >> Ingrese una opción:");
+    	
+    	Vista v = new Vista();
+    	byte accion = v.sc.nextByte();
+        v.sc.nextLine();
+        return accion; 
+    }
+    
+    public static byte mostrarAccionesPersonalDeSeguridad() {
+    	System.out.print("\n <> <> <> Acciones de Personal de Seguridad <> <> <> \n"
+        		+ "   [1] Disparar. \n"
+        		+ "   [2] Cobrar sueldo. \n"
+        		+ "   [3] Pagar impuestos. \n"
+        		+ "   [4] Asistir a reunión. \n"
+        		+ "   [5] Registrar ingreso. \n"
+        		+ "   [6] Registrar salida. \n"
+        		+ "   [0] Salir. \n"
+        		+ "    >> Ingrese una opción:");
+    	
+    	Vista v = new Vista();
+    	byte accion = v.sc.nextByte();
+        v.sc.nextLine();
+        return accion; 
     }
     
 }

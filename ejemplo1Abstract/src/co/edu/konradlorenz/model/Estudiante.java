@@ -38,19 +38,19 @@ public class Estudiante extends Persona {
 	}
 	
 	public String pagarMatricula() {
-		return "El estudiante " + this.getNombre() + "pagó la matrícula.";
+		return "\n <> El estudiante " + this.getNombre() + " pagó la matrícula.";
 	}
 	
 	public String asistirAClase() {
-		return "El estudiante " + this.getNombre() + "está en clase.";
+		return "\n <> El estudiante " + this.getNombre() + " está en clase.";
 	}
 
 	public String realizarLectura() {
-		return "El estudiante " + this.getNombre() + "está leyendo.";
+		return "\n <> El estudiante " + this.getNombre() + " está leyendo.";
 	}
 	
 	public String entregarTrabajo() {
-		return "El estudiante " + this.getNombre() + "entregó el trabajo.";
+		return "\n <> El estudiante " + this.getNombre() + " entregó el trabajo.";
 	}
 	
 }

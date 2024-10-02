@@ -64,17 +64,17 @@ public class PersonalDeSeguridad extends Persona implements Empleado, Revolver{
 
 	@Override
 	public String cobrarSueldo(long SMMLV) {
-		return "El personal de seguridad " + this.getNombre() + "cobró el sueldo de [$" + SMMLV + "].";
+		return "\n <> El personal de seguridad " + this.getNombre() + " cobró el sueldo de [$" + SMMLV + "].";
 	}
 
 	@Override
 	public String pagarImpuestos() {
-		return "El personal de seguridad " + this.getNombre() + "pagó sus impuestos.";
+		return "\n <> El personal de seguridad " + this.getNombre() + " pagó sus impuestos.";
 	}
 
 	@Override
 	public String asistirAReunion() {
-		return "El personal de seguridad " + this.getNombre() + "asistió a la reunión de cierre de semestre.";
+		return "\n <> El personal de seguridad " + this.getNombre() + " asistió a la reunión de cierre de semestre.";
 	}
 	
 }

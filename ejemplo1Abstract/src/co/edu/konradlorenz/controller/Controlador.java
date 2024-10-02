@@ -1,21 +1,30 @@
 package co.edu.konradlorenz.controller;
 
 import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import co.edu.konradlorenz.model.*;
 import co.edu.konradlorenz.view.Vista;
 
 public class Controlador {
+	
 	private byte opcion = -1;
 	private byte tipoPersona;
 	private byte index;
 	private byte atributo;
 	private byte i;
+	private byte accion;
+	
 	private ArrayList <Persona> listaPersonas = new ArrayList<>();
 	private ArrayList <Estudiante> listaEstudiantes = new ArrayList<>();
 	private ArrayList <Profesor> listaProfesores = new ArrayList<>();
 	private ArrayList <Decano> listaDecanos = new ArrayList<>();
 	private ArrayList <PersonalDeSeguridad> listaPersonalDeSeguridad = new ArrayList<>();
+	
+	private LocalDateTime fechaHoraActual = LocalDateTime.now();
+	private DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+	private String actualTime = fechaHoraActual.format(formato);
 	
     public void run() {
         while(opcion != 0) {
@@ -50,21 +59,25 @@ public class Controlador {
 				tipoPersona = Vista.mostrarTipoPersona();
 				switch (tipoPersona) {
 				case 1:
+					Vista.mostrarMensaje("");
 					for (Estudiante estudiante : listaEstudiantes) {
 						Vista.mostrarMensaje(estudiante.toString());
 					}
 					break;
 				case 2:
+					Vista.mostrarMensaje("");
 					for (Profesor profesor : listaProfesores) {
 						Vista.mostrarMensaje(profesor.toString());
 					}
 					break;
 				case 3:
+					Vista.mostrarMensaje("");
 					for (Decano decano : listaDecanos) {
 						Vista.mostrarMensaje(decano.toString());
 					}
 					break;
 				case 4:
+					Vista.mostrarMensaje("");
 					for (PersonalDeSeguridad personalDeSeguridad : listaPersonalDeSeguridad) {
 						Vista.mostrarMensaje(personalDeSeguridad.toString());
 					}
@@ -78,6 +91,7 @@ public class Controlador {
 				}	
 				break;
 			case 3:
+				Vista.mostrarMensaje("");
 				for (Persona persona : listaPersonas) {
 					Vista.mostrarMensaje(persona.toString());
 				}
@@ -87,6 +101,7 @@ public class Controlador {
 				tipoPersona = Vista.mostrarTipoPersona();
 				switch (tipoPersona) {
 				case 1:
+					Vista.mostrarMensaje("");
 					for (Estudiante estudiante : listaEstudiantes) {
 						Vista.mostrarMensaje("["+ i +"] "+ estudiante.toString());
 						i++;
@@ -121,6 +136,7 @@ public class Controlador {
 					
 					break;
 				case 2:
+					Vista.mostrarMensaje("");
 					for (Profesor profesor : listaProfesores) {
 						Vista.mostrarMensaje("["+ i +"] " + profesor.toString());
 						i++;
@@ -155,6 +171,7 @@ public class Controlador {
 					
 					break;
 				case 3:
+					Vista.mostrarMensaje("");
 					for (Decano decano : listaDecanos) {
 						Vista.mostrarMensaje("["+ i +"] " + decano.toString());
 						i++;
@@ -193,6 +210,7 @@ public class Controlador {
 					
 					break;
 				case 4:
+					Vista.mostrarMensaje("");
 					for (PersonalDeSeguridad personalDeSeguridad : listaPersonalDeSeguridad) {
 						Vista.mostrarMensaje("["+ i +"] " + personalDeSeguridad.toString());
 						i++;
@@ -240,6 +258,7 @@ public class Controlador {
 				tipoPersona = Vista.mostrarTipoPersona();
 				switch (tipoPersona) {
 				case 1:
+					Vista.mostrarMensaje("");
 					for (Estudiante estudiante : listaEstudiantes) {
 						Vista.mostrarMensaje("["+ i +"] "+ estudiante.toString());
 						i++;
@@ -254,6 +273,7 @@ public class Controlador {
 					
 					break;
 				case 2:
+					Vista.mostrarMensaje("");
 					for (Profesor profesor : listaProfesores) {
 						Vista.mostrarMensaje("["+ i +"] " + profesor.toString());
 						i++;
@@ -268,6 +288,7 @@ public class Controlador {
 					
 					break;
 				case 3:
+					Vista.mostrarMensaje("");
 					for (Decano decano : listaDecanos) {
 						Vista.mostrarMensaje("["+ i +"] " + decano.toString());
 						i++;
@@ -282,6 +303,7 @@ public class Controlador {
 					
 					break;
 				case 4:
+					Vista.mostrarMensaje("");
 					for (PersonalDeSeguridad personalDeSeguridad : listaPersonalDeSeguridad) {
 						Vista.mostrarMensaje("["+ i +"] " + personalDeSeguridad.toString());
 						i++;
@@ -293,6 +315,186 @@ public class Controlador {
 					
 					listaPersonalDeSeguridad.remove(index);
 					Vista.mostrarMensaje("Personal de seguridad eliminado.");
+					
+					break;
+				case 0:
+					Vista.mostrarMensaje(" <> FIN <> ");
+					break;
+				default:
+					Vista.mostrarMensaje(" >> Opción no válida.");
+					break;
+				}
+				
+				break;
+			case 6:	
+				i = 1;
+				tipoPersona = Vista.mostrarTipoPersona();
+				switch (tipoPersona) {
+				case 1:
+					Vista.mostrarMensaje("");
+					for (Estudiante estudiante : listaEstudiantes) {
+						Vista.mostrarMensaje("["+ i +"] "+ estudiante.toString());
+						i++;
+					}
+					
+					Vista.mostrarMensaje("Seleccione el estudiante: ");
+					index = Vista.pedirIndex();
+					index--;
+					
+					accion = Vista.mostrarAccionesEstudiante();
+					
+					switch (accion) {
+					case 1:
+						Vista.mostrarMensaje(listaEstudiantes.get(index).pagarMatricula());
+						break;
+					case 2:
+						Vista.mostrarMensaje(listaEstudiantes.get(index).asistirAClase());
+						break;
+					case 3:
+						Vista.mostrarMensaje(listaEstudiantes.get(index).realizarLectura());
+						break;
+					case 4:
+						Vista.mostrarMensaje(listaEstudiantes.get(index).entregarTrabajo());
+						break;
+					case 5:
+						Vista.mostrarMensaje(listaEstudiantes.get(index).registrarEntrada(actualTime));
+						break;
+					case 6:
+						Vista.mostrarMensaje(listaEstudiantes.get(index).registrarSalida(actualTime));
+						break;
+					case 0:
+						Vista.mostrarMensaje(" <> FIN <> ");
+						break;
+					default:
+						Vista.mostrarMensaje(" >> Opción no válida.");
+						break;
+					}
+					
+					break;
+				case 2:
+					Vista.mostrarMensaje("");
+					for (Profesor profesor : listaProfesores) {
+						Vista.mostrarMensaje("["+ i +"] " + profesor.toString());
+						i++;
+					}
+					
+					Vista.mostrarMensaje("Seleccione el profesor: ");
+					index = Vista.pedirIndex();
+					index--;
+					
+					accion = Vista.mostrarAccionesProfesor();
+					
+					switch (accion) {
+					case 1:
+						Vista.mostrarMensaje(listaProfesores.get(index).dictarClase());
+						break;
+					case 2:
+						Vista.mostrarMensaje(listaProfesores.get(index).cobrarSueldo(Empleado.SMMLV));
+						break;
+					case 3:
+						Vista.mostrarMensaje(listaProfesores.get(index).pagarImpuestos());
+						break;
+					case 4:
+						Vista.mostrarMensaje(listaProfesores.get(index).asistirAReunion());
+						break;
+					case 5:
+						Vista.mostrarMensaje(listaProfesores.get(index).registrarEntrada(actualTime));
+						break;
+					case 6:
+						Vista.mostrarMensaje(listaProfesores.get(index).registrarSalida(actualTime));
+						break;
+					case 0:
+						Vista.mostrarMensaje(" <> FIN <> ");
+						break;
+					default:
+						Vista.mostrarMensaje(" >> Opción no válida.");
+						break;
+					}
+					
+					break;
+				case 3:
+					Vista.mostrarMensaje("");
+					for (Decano decano : listaDecanos) {
+						Vista.mostrarMensaje("["+ i +"] " + decano.toString());
+						i++;
+					}
+					
+					Vista.mostrarMensaje("Seleccione el decano: ");
+					index = Vista.pedirIndex();
+					index--;
+					
+					accion = Vista.mostrarAccionesDecano();
+					
+					switch (accion) {
+					case 1:
+						Vista.mostrarMensaje(listaDecanos.get(index).dictarClase());
+						break;
+					case 2:
+						Vista.mostrarMensaje(listaDecanos.get(index).cobrarSueldo(Empleado.SMMLV));
+						break;
+					case 3:
+						Vista.mostrarMensaje(listaDecanos.get(index).pagarImpuestos());
+						break;
+					case 4:
+						Vista.mostrarMensaje(listaDecanos.get(index).asistirAReunion());
+						break;
+					case 5:
+						Vista.mostrarMensaje(listaDecanos.get(index).presentarReportes());
+						break;
+					case 6:
+						Vista.mostrarMensaje(listaDecanos.get(index).registrarEntrada(actualTime));
+						break;
+					case 7:
+						Vista.mostrarMensaje(listaDecanos.get(index).registrarSalida(actualTime));
+						break;
+					case 0:
+						Vista.mostrarMensaje(" <> FIN <> ");
+						break;
+					default:
+						Vista.mostrarMensaje(" >> Opción no válida.");
+						break;
+					}
+					
+					break;
+				case 4:
+					Vista.mostrarMensaje("");
+					for (PersonalDeSeguridad personalDeSeguridad : listaPersonalDeSeguridad) {
+						Vista.mostrarMensaje("["+ i +"] " + personalDeSeguridad.toString());
+						i++;
+					}
+					
+					Vista.mostrarMensaje("Seleccione el personal de seguridad: ");
+					index = Vista.pedirIndex();
+					index--;
+					
+					accion = Vista.mostrarAccionesPersonalDeSeguridad();
+					
+					switch (accion) {
+					case 1:
+						Vista.mostrarMensaje(listaPersonalDeSeguridad.get(index).disparar());
+						break;
+					case 2:
+						Vista.mostrarMensaje(listaPersonalDeSeguridad.get(index).cobrarSueldo(Empleado.SMMLV));
+						break;
+					case 3:
+						Vista.mostrarMensaje(listaPersonalDeSeguridad.get(index).pagarImpuestos());
+						break;
+					case 4:
+						Vista.mostrarMensaje(listaPersonalDeSeguridad.get(index).asistirAReunion());
+						break;
+					case 5:
+						Vista.mostrarMensaje(listaPersonalDeSeguridad.get(index).registrarEntrada(actualTime));
+						break;
+					case 6:
+						Vista.mostrarMensaje(listaPersonalDeSeguridad.get(index).registrarSalida(actualTime));
+						break;
+					case 0:
+						Vista.mostrarMensaje(" <> FIN <> ");
+						break;
+					default:
+						Vista.mostrarMensaje(" >> Opción no válida.");
+						break;
+					}
 					
 					break;
 				case 0:

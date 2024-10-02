@@ -37,7 +37,7 @@ public class Decano extends Profesor{
 	}
 
 	public String presentarReportes() {
-		return "El Decano " + this.getNombre() + "presentó reportes de su facultad.";
+		return "\n <> El Decano " + this.getNombre() + " presentó reportes de su facultad.";
 	}
 	
 }
