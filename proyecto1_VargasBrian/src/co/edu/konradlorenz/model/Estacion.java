@@ -3,12 +3,12 @@ package co.edu.konradlorenz.model;
 import java.util.ArrayList;
 
 public class Estacion {
-	private ArrayList <Jugador> listaJugadores = new ArrayList<>();
+	
+	private ArrayList<Jugador> listaJugadores = new ArrayList<>();
 
 	public Estacion() {
-	
 	}
-	
+
 	public Estacion(ArrayList<Jugador> listaJugadores) {
 		super();
 		this.listaJugadores = listaJugadores;
@@ -26,6 +26,5 @@ public class Estacion {
 	public String toString() {
 		return "Estacion [listaJugadores=" + listaJugadores + "]";
 	}
-	
-	
+
 }

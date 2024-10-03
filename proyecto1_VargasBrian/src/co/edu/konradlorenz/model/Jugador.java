@@ -2,15 +2,14 @@ package co.edu.konradlorenz.model;
 
 import java.util.Date;
 
-public class Jugador {
+public abstract class Jugador implements ClienteVip{
 	private String nombre;
 	private long identificacion;
 	private String fecha;
-	
+
 	public Jugador() {
-		
 	}
-	
+
 	public Jugador(String nombre, long identificacion, String fecha) {
 		super();
 		this.nombre = nombre;
@@ -46,6 +45,7 @@ public class Jugador {
 	public String toString() {
 		return "Jugador [nombre=" + nombre + ", identificacion=" + identificacion + ", fecha=" + fecha + "]";
 	}
-	
-	
+
+	public abstract long pagar(int minutos);
+
 }
