@@ -59,7 +59,7 @@ public class PersonalDeSeguridad extends Persona implements Empleado, Revolver{
 			balasActuales = NUMERO_BALAS;
 		}
 		balasActuales--;
-		return "¡Bang!";
+		return "\n¡Bang!";
 	}
 
 	@Override

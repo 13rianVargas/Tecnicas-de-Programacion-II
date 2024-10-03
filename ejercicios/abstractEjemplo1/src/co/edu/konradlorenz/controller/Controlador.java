@@ -17,10 +17,6 @@ public class Controlador {
 	private byte accion;
 	
 	private ArrayList <Persona> listaPersonas = new ArrayList<>();
-	private ArrayList <Estudiante> listaEstudiantes = new ArrayList<>();
-	private ArrayList <Profesor> listaProfesores = new ArrayList<>();
-	private ArrayList <Decano> listaDecanos = new ArrayList<>();
-	private ArrayList <PersonalDeSeguridad> listaPersonalDeSeguridad = new ArrayList<>();
 	
 	private LocalDateTime fechaHoraActual = LocalDateTime.now();
 	private DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -28,9 +24,7 @@ public class Controlador {
 	
     public void run() {
         while(opcion != 0) {
-        	
         	opcion = Vista.mostrarMenu();
-        	
         	switch (opcion) {
 			case 1:
 				tipoPersona = Vista.mostrarTipoPersona();
@@ -60,26 +54,38 @@ public class Controlador {
 				switch (tipoPersona) {
 				case 1:
 					Vista.mostrarMensaje("");
-					for (Estudiante estudiante : listaEstudiantes) {
-						Vista.mostrarMensaje(estudiante.toString());
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Estudiante) {
+							Estudiante estudiante = (Estudiante) persona;
+					        Vista.mostrarMensaje(estudiante.toString());
+					    }
 					}
 					break;
 				case 2:
 					Vista.mostrarMensaje("");
-					for (Profesor profesor : listaProfesores) {
-						Vista.mostrarMensaje(profesor.toString());
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Profesor) {
+							Profesor profesor = (Profesor) persona;
+					        Vista.mostrarMensaje(profesor.toString());
+					    }
 					}
 					break;
 				case 3:
 					Vista.mostrarMensaje("");
-					for (Decano decano : listaDecanos) {
-						Vista.mostrarMensaje(decano.toString());
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Decano) {
+							Decano decano = (Decano) persona;
+					        Vista.mostrarMensaje(decano.toString());
+					    }
 					}
 					break;
 				case 4:
 					Vista.mostrarMensaje("");
-					for (PersonalDeSeguridad personalDeSeguridad : listaPersonalDeSeguridad) {
-						Vista.mostrarMensaje(personalDeSeguridad.toString());
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof PersonalDeSeguridad) {
+							PersonalDeSeguridad personalDeSeguridad = (PersonalDeSeguridad) persona;
+					        Vista.mostrarMensaje(personalDeSeguridad.toString());
+					    }
 					}
 					break;
 				case 0:
@@ -101,64 +107,72 @@ public class Controlador {
 				tipoPersona = Vista.mostrarTipoPersona();
 				switch (tipoPersona) {
 				case 1:
+					ArrayList<Estudiante> estudiantesTemporal = new ArrayList<>();
 					Vista.mostrarMensaje("");
-					for (Estudiante estudiante : listaEstudiantes) {
-						Vista.mostrarMensaje("["+ i +"] "+ estudiante.toString());
-						i++;
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Estudiante) {
+							Estudiante estudiante = (Estudiante) persona;
+							Vista.mostrarMensaje("["+ i +"] "+ estudiante.toString());
+							estudiantesTemporal.add(estudiante);
+							i++;
+					    }
 					}
-					
 					Vista.mostrarMensaje("Seleccione el estudiante a modificar: ");
 					index = Vista.pedirIndex();
 					index--;
+					Estudiante estudianteSeleccionado = estudiantesTemporal.get(index);
 					Vista.mostrarMensaje("Seleccione atributo a modificar: ");
 					atributo = Vista.mostrarAtributosDeEstudiante();
-					
 					switch (atributo) {
 					case 1:
-						listaEstudiantes.get(index).setNombre(Vista.pedirString("nombre"));
+						estudianteSeleccionado.setNombre(Vista.pedirString("nombre"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 2:
-						listaEstudiantes.get(index).setCedula(Vista.pedirString("cédula"));
-						Vista.mostrarMensaje("Atributo actualizado.");
-						break;
-					case 3:
-						listaEstudiantes.get(index).setCodigoEstudiantil(Long.parseLong(Vista.pedirString("código estudiantil")));
-						Vista.mostrarMensaje("Atributo actualizado.");
-						break;
-					case 0:
-						Vista.mostrarMensaje("\n <> FIN <> ");
-						break;
-					default:
-						Vista.mostrarMensaje("\n >> Opción no válida.");
-						break;
+			            estudianteSeleccionado.setCedula(Vista.pedirString("cédula"));
+			            Vista.mostrarMensaje("Atributo actualizado.");
+			            break;
+			        case 3:
+			            estudianteSeleccionado.setCodigoEstudiantil(Long.parseLong(Vista.pedirString("código estudiantil")));
+			            Vista.mostrarMensaje("Atributo actualizado.");
+			            break;
+			        case 0:
+			            Vista.mostrarMensaje("\n <> FIN <> ");
+			            break;
+			        default:
+			            Vista.mostrarMensaje("\n >> Opción no válida.");
+			            break;
 					}
-					
 					break;
 				case 2:
+					ArrayList<Profesor> profesoresTemporal = new ArrayList<>();
 					Vista.mostrarMensaje("");
-					for (Profesor profesor : listaProfesores) {
-						Vista.mostrarMensaje("["+ i +"] " + profesor.toString());
-						i++;
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Profesor) {
+							Profesor profesor = (Profesor) persona;
+							Vista.mostrarMensaje("["+ i +"] "+ profesor.toString());
+							profesoresTemporal.add(profesor);
+							i++;
+					    }
 					}
-					
 					Vista.mostrarMensaje("Seleccione el profesor a modificar: ");
 					index = Vista.pedirIndex();
 					index--;
+					Profesor profesorSeleccionado = profesoresTemporal.get(index);
 					Vista.mostrarMensaje("Seleccione atributo a modificar: ");
 					atributo = Vista.mostrarAtributosDeProfesor();
 					
 					switch (atributo) {
 					case 1:
-						listaProfesores.get(index).setNombre(Vista.pedirString("nombre"));
+						profesorSeleccionado.setNombre(Vista.pedirString("nombre"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 2:
-						listaProfesores.get(index).setCedula(Vista.pedirString("cédula"));
+						profesorSeleccionado.setCedula(Vista.pedirString("cédula"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 3:
-						listaProfesores.get(index).setNumeroDeTarjetaProfesional(Vista.pedirString("número de tarjeta profesional"));
+						profesorSeleccionado.setNumeroDeTarjetaProfesional(Vista.pedirString("número de tarjeta profesional"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 0:
@@ -168,36 +182,39 @@ public class Controlador {
 						Vista.mostrarMensaje("\n >> Opción no válida.");
 						break;
 					}
-					
 					break;
 				case 3:
+					ArrayList<Decano> decanosTemporal = new ArrayList<>();
 					Vista.mostrarMensaje("");
-					for (Decano decano : listaDecanos) {
-						Vista.mostrarMensaje("["+ i +"] " + decano.toString());
-						i++;
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Decano) {
+							Decano decano = (Decano) persona;
+							Vista.mostrarMensaje("["+ i +"] "+ decano.toString());
+							decanosTemporal.add(decano);
+							i++;
+					    }
 					}
-					
 					Vista.mostrarMensaje("Seleccione el decano a modificar: ");
 					index = Vista.pedirIndex();
 					index--;
+					Decano decanoSeleccionado = decanosTemporal.get(index);
 					Vista.mostrarMensaje("Seleccione atributo a modificar: ");
 					atributo = Vista.mostrarAtributosDeDecano();
-					
 					switch (atributo) {
 					case 1:
-						listaDecanos.get(index).setNombre(Vista.pedirString("nombre"));
+						decanoSeleccionado.setNombre(Vista.pedirString("nombre"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 2:
-						listaDecanos.get(index).setCedula(Vista.pedirString("cédula"));
+						decanoSeleccionado.setCedula(Vista.pedirString("cédula"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 3:
-						listaDecanos.get(index).setNumeroDeTarjetaProfesional(Vista.pedirString("número de tarjeta profesional"));
+						decanoSeleccionado.setNumeroDeTarjetaProfesional(Vista.pedirString("número de tarjeta profesional"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 4:
-						listaDecanos.get(index).setFacultad(Vista.pedirString("facultad"));
+						decanoSeleccionado.setFacultad(Vista.pedirString("facultad"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 0:
@@ -207,32 +224,35 @@ public class Controlador {
 						Vista.mostrarMensaje("\n >> Opción no válida.");
 						break;
 					}
-					
 					break;
 				case 4:
+					ArrayList<PersonalDeSeguridad> personalDeSeguridadTemporal = new ArrayList<>();
 					Vista.mostrarMensaje("");
-					for (PersonalDeSeguridad personalDeSeguridad : listaPersonalDeSeguridad) {
-						Vista.mostrarMensaje("["+ i +"] " + personalDeSeguridad.toString());
-						i++;
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof PersonalDeSeguridad) {
+							PersonalDeSeguridad personalDeSeguridad = (PersonalDeSeguridad) persona;
+							Vista.mostrarMensaje("["+ i +"] "+ personalDeSeguridad.toString());
+							personalDeSeguridadTemporal.add(personalDeSeguridad);
+							i++;
+					    }
 					}
-					
-					Vista.mostrarMensaje("Seleccione el personal de seguridad a modificar: ");
+					Vista.mostrarMensaje("Seleccione el decano a modificar: ");
 					index = Vista.pedirIndex();
 					index--;
+					PersonalDeSeguridad personalDeSeguridad = personalDeSeguridadTemporal.get(index);
 					Vista.mostrarMensaje("Seleccione atributo a modificar: ");
-					atributo = Vista.mostrarAtributosDePersonalDeSeguridad();
-					
+					atributo = Vista.mostrarAtributosDeDecano();
 					switch (atributo) {
 					case 1:
-						listaPersonalDeSeguridad.get(index).setNombre(Vista.pedirString("nombre"));
+						personalDeSeguridad.setNombre(Vista.pedirString("nombre"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 2:
-						listaPersonalDeSeguridad.get(index).setCedula(Vista.pedirString("cédula"));
+						personalDeSeguridad.setCedula(Vista.pedirString("cédula"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 3:
-						listaPersonalDeSeguridad.get(index).setNumeroDeMatricula(Long.parseLong(Vista.pedirString("número de matrícula")));
+						personalDeSeguridad.setNumeroDeMatricula(Long.parseLong(Vista.pedirString("número de matrícula")));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 0:
@@ -242,7 +262,6 @@ public class Controlador {
 						Vista.mostrarMensaje(" >> Opción no válida.");
 						break;
 					}
-					
 					break;
 				case 0:
 					Vista.mostrarMensaje("\n <> FIN <> ");
@@ -250,72 +269,87 @@ public class Controlador {
 				default:
 					Vista.mostrarMensaje("\n >> Opción no válida.");
 					break;
-				}
-					
+				}	
 				break;
 			case 5:
 				i = 1;
 				tipoPersona = Vista.mostrarTipoPersona();
 				switch (tipoPersona) {
 				case 1:
+					ArrayList<Estudiante> estudiantesTemporal = new ArrayList<>();
 					Vista.mostrarMensaje("");
-					for (Estudiante estudiante : listaEstudiantes) {
-						Vista.mostrarMensaje("["+ i +"] "+ estudiante.toString());
-						i++;
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Estudiante) {
+							Estudiante estudiante = (Estudiante) persona;
+							Vista.mostrarMensaje("["+ i +"] "+ estudiante.toString());
+							estudiantesTemporal.add(estudiante);
+							i++;
+					    }
 					}
-					
 					Vista.mostrarMensaje("Seleccione el estudiante a eliminar: ");
 					index = Vista.pedirIndex();
 					index--;
-					
-					listaEstudiantes.remove(index);
+					Estudiante estudianteAEliminar = estudiantesTemporal.get(index);
+					listaPersonas.remove(estudianteAEliminar);
+					estudiantesTemporal.remove(estudianteAEliminar);
 					Vista.mostrarMensaje("Estudiante eliminado.");
-					
 					break;
 				case 2:
+					ArrayList<Profesor> profesoresTemporal = new ArrayList<>();
 					Vista.mostrarMensaje("");
-					for (Profesor profesor : listaProfesores) {
-						Vista.mostrarMensaje("["+ i +"] " + profesor.toString());
-						i++;
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Profesor) {
+							Profesor profesor = (Profesor) persona;
+							Vista.mostrarMensaje("["+ i +"] "+ profesor.toString());
+							profesoresTemporal.add(profesor);
+							i++;
+					    }
 					}
-					
-					Vista.mostrarMensaje("Seleccione el profesor a modificar: ");
+					Vista.mostrarMensaje("Seleccione el profesor a eliminar: ");
 					index = Vista.pedirIndex();
 					index--;
-					
-					listaProfesores.remove(index);
+					Profesor profesorAEliminar = profesoresTemporal.get(index);
+					listaPersonas.remove(profesorAEliminar);
+					profesoresTemporal.remove(profesorAEliminar);
 					Vista.mostrarMensaje("Profesor eliminado.");
-					
 					break;
 				case 3:
+					ArrayList<Decano> decanosTemporal = new ArrayList<>();
 					Vista.mostrarMensaje("");
-					for (Decano decano : listaDecanos) {
-						Vista.mostrarMensaje("["+ i +"] " + decano.toString());
-						i++;
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Decano) {
+							Decano decano = (Decano) persona;
+							Vista.mostrarMensaje("["+ i +"] "+ decano.toString());
+							decanosTemporal.add(decano);
+							i++;
+					    }
 					}
-					
-					Vista.mostrarMensaje("Seleccione el decano a modificar: ");
+					Vista.mostrarMensaje("Seleccione el decano a eliminar: ");
 					index = Vista.pedirIndex();
 					index--;
-					
-					listaDecanos.remove(index);
+					Decano decanoAEliminar = decanosTemporal.get(index);
+					listaPersonas.remove(decanoAEliminar);
+					decanosTemporal.remove(decanoAEliminar);
 					Vista.mostrarMensaje("Decano eliminado.");
-					
 					break;
 				case 4:
+					ArrayList<PersonalDeSeguridad> personalDeSeguridadTemporal = new ArrayList<>();
 					Vista.mostrarMensaje("");
-					for (PersonalDeSeguridad personalDeSeguridad : listaPersonalDeSeguridad) {
-						Vista.mostrarMensaje("["+ i +"] " + personalDeSeguridad.toString());
-						i++;
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof PersonalDeSeguridad) {
+							PersonalDeSeguridad personalDeSeguridad = (PersonalDeSeguridad) persona;
+							Vista.mostrarMensaje("["+ i +"] "+ personalDeSeguridad.toString());
+							personalDeSeguridadTemporal.add(personalDeSeguridad);
+							i++;
+					    }
 					}
-					
-					Vista.mostrarMensaje("Seleccione el personal de seguridad a modificar: ");
+					Vista.mostrarMensaje("Seleccione el personal de seguridad a eliminar: ");
 					index = Vista.pedirIndex();
 					index--;
-					
-					listaPersonalDeSeguridad.remove(index);
+					PersonalDeSeguridad personalDeSeguridadAEliminar = personalDeSeguridadTemporal.get(index);
+					listaPersonas.remove(personalDeSeguridadAEliminar);
+					personalDeSeguridadTemporal.remove(personalDeSeguridadAEliminar);
 					Vista.mostrarMensaje("Personal de seguridad eliminado.");
-					
 					break;
 				case 0:
 					Vista.mostrarMensaje(" <> FIN <> ");
@@ -324,46 +358,47 @@ public class Controlador {
 					Vista.mostrarMensaje(" >> Opción no válida.");
 					break;
 				}
-				
 				break;
 			case 6:	
 				i = 1;
 				tipoPersona = Vista.mostrarTipoPersona();
 				switch (tipoPersona) {
 				case 1:
+					ArrayList<Estudiante> estudiantesTemporal = new ArrayList<>();
 					Vista.mostrarMensaje("");
-					for (Estudiante estudiante : listaEstudiantes) {
-						Vista.mostrarMensaje("["+ i +"] "+ estudiante.toString());
-						i++;
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Estudiante) {
+							Estudiante estudiante = (Estudiante) persona;
+							Vista.mostrarMensaje("["+ i +"] "+ estudiante.toString());
+							estudiantesTemporal.add(estudiante);
+							i++;
+					    }
 					}
-					
 					Vista.mostrarMensaje("Seleccione el estudiante: ");
 					index = Vista.pedirIndex();
 					index--;
-					
 					accion = Vista.mostrarAccionesEstudiante();
-					
 					switch (accion) {
 					case 1:
-						Vista.mostrarMensaje(" <> " + listaEstudiantes.get(index).getNombre() + " pagó la matrícula, con un valor de: " + listaEstudiantes.get(index).pagarMatricula());
+						Vista.mostrarMensaje(" <> " + estudiantesTemporal.get(index).getNombre() + " pagó la matrícula, con un valor de: " + estudiantesTemporal.get(index).pagarMatricula());
 						break;
 					case 2:
-						Vista.mostrarMensaje(listaEstudiantes.get(index).asistirAClase());
+						Vista.mostrarMensaje(estudiantesTemporal.get(index).asistirAClase());
 						break;
 					case 3:
-						String mensaje = listaEstudiantes.get(index).realizarLectura() ? " realizó la lectura." : " no realizó la lectura.";
-						Vista.mostrarMensaje(listaEstudiantes.get(index).getNombre() + mensaje);
+						String mensaje = estudiantesTemporal.get(index).realizarLectura() ? " realizó la lectura." : " no realizó la lectura.";
+						Vista.mostrarMensaje("\n" + estudiantesTemporal.get(index).getNombre() + mensaje);
 						break;
 					case 4:
-						Vista.mostrarMensaje(listaEstudiantes.get(index).entregarTrabajo());
+						Vista.mostrarMensaje(estudiantesTemporal.get(index).entregarTrabajo());
 						break;
 					case 5:
-						listaEstudiantes.get(index).registrarEntrada(actualTime);
-						Vista.mostrarMensaje("Entrada registrada ["+ actualTime +"]");
+						estudiantesTemporal.get(index).registrarEntrada(actualTime);
+						Vista.mostrarMensaje("\n <> Entrada registrada ["+ actualTime +"]");
 						break;
 					case 6:
-						listaEstudiantes.get(index).registrarSalida(actualTime);
-						Vista.mostrarMensaje("Salida registrada ["+ actualTime +"]");
+						estudiantesTemporal.get(index).registrarSalida(actualTime);
+						Vista.mostrarMensaje("\n <> Salida registrada ["+ actualTime +"]");
 						break;
 					case 0:
 						Vista.mostrarMensaje(" <> FIN <> ");
@@ -375,39 +410,41 @@ public class Controlador {
 					
 					break;
 				case 2:
+					ArrayList<Profesor> profesoresTemporal = new ArrayList<>();
 					Vista.mostrarMensaje("");
-					for (Profesor profesor : listaProfesores) {
-						Vista.mostrarMensaje("["+ i +"] " + profesor.toString());
-						i++;
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Profesor) {
+							Profesor profesor = (Profesor) persona;
+							Vista.mostrarMensaje("["+ i +"] "+ profesor.toString());
+							profesoresTemporal.add(profesor);
+							i++;
+					    }
 					}
-					
 					Vista.mostrarMensaje("Seleccione el profesor: ");
 					index = Vista.pedirIndex();
 					index--;
-					
 					accion = Vista.mostrarAccionesProfesor();
-					
 					switch (accion) {
 					case 1:
-						Vista.mostrarMensaje(listaProfesores.get(index).dictarClase());
+						Vista.mostrarMensaje(profesoresTemporal.get(index).dictarClase());
 						break;
 					case 2:
-						String mensaje = listaProfesores.get(index).cobrarSueldo() ? "Se cobró el sueldo." : "No se cobró el sueldo.";
-						Vista.mostrarMensaje(mensaje);
+						String mensaje = profesoresTemporal.get(index).cobrarSueldo() ? "Se cobró el sueldo." : "No se cobró el sueldo.";
+						Vista.mostrarMensaje("\n" + mensaje);
 						break;
 					case 3:
-						Vista.mostrarMensaje("Se pagó " + listaProfesores.get(index).pagarImpuestos() + " en impuestos.");
+						Vista.mostrarMensaje("Se pagó " + profesoresTemporal.get(index).pagarImpuestos() + " en impuestos.");
 						break;
 					case 4:
-						Vista.mostrarMensaje(listaProfesores.get(index).asistirAReunion());
+						Vista.mostrarMensaje(profesoresTemporal.get(index).asistirAReunion());
 						break;
 					case 5:
-						listaEstudiantes.get(index).registrarEntrada(actualTime);
-						Vista.mostrarMensaje("Entrada registrada ["+ actualTime +"]");
+						profesoresTemporal.get(index).registrarEntrada(actualTime);
+						Vista.mostrarMensaje("\n <> Entrada registrada ["+ actualTime +"]");
 						break;
 					case 6:
-						listaEstudiantes.get(index).registrarSalida(actualTime);
-						Vista.mostrarMensaje("Salida registrada ["+ actualTime +"]");
+						profesoresTemporal.get(index).registrarSalida(actualTime);
+						Vista.mostrarMensaje("\n <> Salida registrada ["+ actualTime +"]");
 						break;
 					case 0:
 						Vista.mostrarMensaje(" <> FIN <> ");
@@ -419,42 +456,44 @@ public class Controlador {
 					
 					break;
 				case 3:
+					ArrayList<Decano> decanosTemporal = new ArrayList<>();
 					Vista.mostrarMensaje("");
-					for (Decano decano : listaDecanos) {
-						Vista.mostrarMensaje("["+ i +"] " + decano.toString());
-						i++;
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Decano) {
+							Decano decano = (Decano) persona;
+							Vista.mostrarMensaje("["+ i +"] "+ decano.toString());
+							decanosTemporal.add(decano);
+							i++;
+					    }
 					}
-					
 					Vista.mostrarMensaje("Seleccione el decano: ");
 					index = Vista.pedirIndex();
 					index--;
-					
 					accion = Vista.mostrarAccionesDecano();
-					
 					switch (accion) {
 					case 1:
-						Vista.mostrarMensaje(listaDecanos.get(index).dictarClase());
+						Vista.mostrarMensaje(decanosTemporal.get(index).dictarClase());
 						break;
 					case 2:
-						String mensaje = listaDecanos.get(index).cobrarSueldo() ? "Se cobró el sueldo." : "No se cobró el sueldo.";
-						Vista.mostrarMensaje(mensaje);
+						String mensaje = decanosTemporal.get(index).cobrarSueldo() ? "Se cobró el sueldo." : "No se cobró el sueldo.";
+						Vista.mostrarMensaje("\n" + mensaje);
 						break;
 					case 3:
-						Vista.mostrarMensaje("Se pagó " + listaDecanos.get(index).pagarImpuestos() + " en impuestos.");
+						Vista.mostrarMensaje("Se pagó " + decanosTemporal.get(index).pagarImpuestos() + " en impuestos.");
 						break;
 					case 4:
-						Vista.mostrarMensaje(listaDecanos.get(index).asistirAReunion());
+						Vista.mostrarMensaje(decanosTemporal.get(index).asistirAReunion());
 						break;
 					case 5:
-						Vista.mostrarMensaje(listaDecanos.get(index).presentarReportes());
+						Vista.mostrarMensaje(decanosTemporal.get(index).presentarReportes());
 						break;
 					case 6:
-						listaEstudiantes.get(index).registrarEntrada(actualTime);
-						Vista.mostrarMensaje("Entrada registrada ["+ actualTime +"]");
+						decanosTemporal.get(index).registrarEntrada(actualTime);
+						Vista.mostrarMensaje("\n <> Entrada registrada ["+ actualTime +"]");
 						break;
 					case 7:
-						listaEstudiantes.get(index).registrarSalida(actualTime);
-						Vista.mostrarMensaje("Salida registrada ["+ actualTime +"]");
+						decanosTemporal.get(index).registrarSalida(actualTime);
+						Vista.mostrarMensaje("\n <> Salida registrada ["+ actualTime +"]");
 						break;
 					case 0:
 						Vista.mostrarMensaje(" <> FIN <> ");
@@ -466,39 +505,41 @@ public class Controlador {
 					
 					break;
 				case 4:
+					ArrayList<PersonalDeSeguridad> personalDeSeguridadTemporal = new ArrayList<>();
 					Vista.mostrarMensaje("");
-					for (PersonalDeSeguridad personalDeSeguridad : listaPersonalDeSeguridad) {
-						Vista.mostrarMensaje("["+ i +"] " + personalDeSeguridad.toString());
-						i++;
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof PersonalDeSeguridad) {
+							PersonalDeSeguridad personalDeSeguridad = (PersonalDeSeguridad) persona;
+							Vista.mostrarMensaje("["+ i +"] "+ personalDeSeguridad.toString());
+							personalDeSeguridadTemporal.add(personalDeSeguridad);
+							i++;
+					    }
 					}
-					
 					Vista.mostrarMensaje("Seleccione el personal de seguridad: ");
 					index = Vista.pedirIndex();
 					index--;
-					
 					accion = Vista.mostrarAccionesPersonalDeSeguridad();
-					
 					switch (accion) {
 					case 1:
-						Vista.mostrarMensaje(listaPersonalDeSeguridad.get(index).disparar());
+						Vista.mostrarMensaje(personalDeSeguridadTemporal.get(index).disparar());
 						break;
 					case 2:
-						String mensaje = listaPersonalDeSeguridad.get(index).cobrarSueldo() ? "Se cobró el sueldo." : "No se cobró el sueldo.";
-						Vista.mostrarMensaje(mensaje);
+						String mensaje = personalDeSeguridadTemporal.get(index).cobrarSueldo() ? "Se cobró el sueldo." : "No se cobró el sueldo.";
+						Vista.mostrarMensaje("\n" + mensaje);
 						break;
 					case 3:
-						Vista.mostrarMensaje("Se pagó " + listaPersonalDeSeguridad.get(index).pagarImpuestos() + " en impuestos.");
+						Vista.mostrarMensaje("Se pagó " + personalDeSeguridadTemporal.get(index).pagarImpuestos() + " en impuestos.");
 						break;
 					case 4:
-						Vista.mostrarMensaje(listaPersonalDeSeguridad.get(index).asistirAReunion());
+						Vista.mostrarMensaje(personalDeSeguridadTemporal.get(index).asistirAReunion());
 						break;
 					case 5:
-						listaEstudiantes.get(index).registrarEntrada(actualTime);
-						Vista.mostrarMensaje("Entrada registrada ["+ actualTime +"]");
+						personalDeSeguridadTemporal.get(index).registrarEntrada(actualTime);
+						Vista.mostrarMensaje("\n <> Entrada registrada ["+ actualTime +"]");
 						break;
 					case 6:
-						listaEstudiantes.get(index).registrarSalida(actualTime);
-						Vista.mostrarMensaje("Salida registrada ["+ actualTime +"]");
+						personalDeSeguridadTemporal.get(index).registrarSalida(actualTime);
+						Vista.mostrarMensaje("\n <> Salida registrada ["+ actualTime +"]");
 						break;
 					case 0:
 						Vista.mostrarMensaje(" <> FIN <> ");
@@ -531,28 +572,24 @@ public class Controlador {
 	private void nuevoEstudiante() {
 		Estudiante estudiante = new Estudiante (Vista.pedirString("nombre"),Vista.pedirString("cédula"),Long.parseLong(Vista.pedirString("código estudiantil")));
 		listaPersonas.add(estudiante);
-		listaEstudiantes.add(estudiante);
-		Vista.mostrarMensaje("Estudiante creado.");
+		Vista.mostrarMensaje("\n <> Estudiante creado. <>");
 	}
 
 	private void nuevoProfesor() {
 		Profesor profesor = new Profesor (Vista.pedirString("nombre"),Vista.pedirString("cédula"),Vista.pedirString("número de tarjeta profesional"));
 		listaPersonas.add(profesor);
-		listaProfesores.add(profesor);
-		Vista.mostrarMensaje("Profesor creado.");
+		Vista.mostrarMensaje("\n <> Profesor creado. <>");
 	}
 
 	private void nuevoDecano() {
 		Decano decano = new Decano (Vista.pedirString("nombre"),Vista.pedirString("cédula"),Vista.pedirString("número de tarjeta profesional"),Vista.pedirString("facultad"));
 		listaPersonas.add(decano);
-		listaDecanos.add(decano);
-		Vista.mostrarMensaje("Decano creado.");
+		Vista.mostrarMensaje("\n <> Decano creado. <>");
 	}
 
 	private void nuevoPersonalDeSeguridad() {
 		PersonalDeSeguridad personalDeSeguridad = new PersonalDeSeguridad (Vista.pedirString("nombre"),Vista.pedirString("cédula"),Long.parseLong(Vista.pedirString("número de matrícula")));
 		listaPersonas.add(personalDeSeguridad);
-		listaPersonalDeSeguridad.add(personalDeSeguridad);
-		Vista.mostrarMensaje("Personal de seguridad creado.");
+		Vista.mostrarMensaje("\n <> Personal de seguridad creado. <>");
 	}
 }
