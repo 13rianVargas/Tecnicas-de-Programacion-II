@@ -17,10 +17,6 @@ public class Controlador {
 	private byte accion;
 	
 	private ArrayList <Persona> listaPersonas = new ArrayList<>();
-	private ArrayList <Estudiante> listaEstudiantes = new ArrayList<>();
-	private ArrayList <Profesor> listaProfesores = new ArrayList<>();
-	private ArrayList <Decano> listaDecanos = new ArrayList<>();
-	private ArrayList <PersonalDeSeguridad> listaPersonalDeSeguridad = new ArrayList<>();
 	
 	private LocalDateTime fechaHoraActual = LocalDateTime.now();
 	private DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -28,9 +24,7 @@ public class Controlador {
 	
     public void run() {
         while(opcion != 0) {
-        	
         	opcion = Vista.mostrarMenu();
-        	
         	switch (opcion) {
 			case 1:
 				tipoPersona = Vista.mostrarTipoPersona();
@@ -60,26 +54,38 @@ public class Controlador {
 				switch (tipoPersona) {
 				case 1:
 					Vista.mostrarMensaje("");
-					for (Estudiante estudiante : listaEstudiantes) {
-						Vista.mostrarMensaje(estudiante.toString());
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Estudiante) {
+							Estudiante estudiante = (Estudiante) persona;
+					        Vista.mostrarMensaje(estudiante.toString());
+					    }
 					}
 					break;
 				case 2:
 					Vista.mostrarMensaje("");
-					for (Profesor profesor : listaProfesores) {
-						Vista.mostrarMensaje(profesor.toString());
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Profesor) {
+							Profesor profesor = (Profesor) persona;
+					        Vista.mostrarMensaje(profesor.toString());
+					    }
 					}
 					break;
 				case 3:
 					Vista.mostrarMensaje("");
-					for (Decano decano : listaDecanos) {
-						Vista.mostrarMensaje(decano.toString());
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Decano) {
+							Decano decano = (Decano) persona;
+					        Vista.mostrarMensaje(decano.toString());
+					    }
 					}
 					break;
 				case 4:
 					Vista.mostrarMensaje("");
-					for (PersonalDeSeguridad personalDeSeguridad : listaPersonalDeSeguridad) {
-						Vista.mostrarMensaje(personalDeSeguridad.toString());
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof PersonalDeSeguridad) {
+							PersonalDeSeguridad personalDeSeguridad = (PersonalDeSeguridad) persona;
+					        Vista.mostrarMensaje(personalDeSeguridad.toString());
+					    }
 					}
 					break;
 				case 0:
@@ -101,64 +107,73 @@ public class Controlador {
 				tipoPersona = Vista.mostrarTipoPersona();
 				switch (tipoPersona) {
 				case 1:
+					ArrayList<Estudiante> estudiantesTemporal = new ArrayList<>();
 					Vista.mostrarMensaje("");
-					for (Estudiante estudiante : listaEstudiantes) {
-						Vista.mostrarMensaje("["+ i +"] "+ estudiante.toString());
-						i++;
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Estudiante) {
+							Estudiante estudiante = (Estudiante) persona;
+							Vista.mostrarMensaje("["+ i +"] "+ estudiante.toString());
+							estudiantesTemporal.add(estudiante);
+							i++;
+					    }
 					}
-					
 					Vista.mostrarMensaje("Seleccione el estudiante a modificar: ");
 					index = Vista.pedirIndex();
 					index--;
+					Estudiante estudianteSeleccionado = estudiantesTemporal.get(index);
 					Vista.mostrarMensaje("Seleccione atributo a modificar: ");
 					atributo = Vista.mostrarAtributosDeEstudiante();
-					
 					switch (atributo) {
 					case 1:
-						listaEstudiantes.get(index).setNombre(Vista.pedirString("nombre"));
+						estudianteSeleccionado.setNombre(Vista.pedirString("nombre"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 2:
-						listaEstudiantes.get(index).setCedula(Vista.pedirString("cédula"));
-						Vista.mostrarMensaje("Atributo actualizado.");
-						break;
-					case 3:
-						listaEstudiantes.get(index).setCodigoEstudiantil(Long.parseLong(Vista.pedirString("código estudiantil")));
-						Vista.mostrarMensaje("Atributo actualizado.");
-						break;
-					case 0:
-						Vista.mostrarMensaje("\n <> FIN <> ");
-						break;
-					default:
-						Vista.mostrarMensaje("\n >> Opción no válida.");
-						break;
+			            estudianteSeleccionado.setCedula(Vista.pedirString("cédula"));
+			            Vista.mostrarMensaje("Atributo actualizado.");
+			            break;
+			        case 3:
+			            estudianteSeleccionado.setCodigoEstudiantil(Long.parseLong(Vista.pedirString("código estudiantil")));
+			            Vista.mostrarMensaje("Atributo actualizado.");
+			            break;
+			        case 0:
+			            Vista.mostrarMensaje("\n <> FIN <> ");
+			            break;
+			        default:
+			            Vista.mostrarMensaje("\n >> Opción no válida.");
+			            break;
 					}
 					
 					break;
 				case 2:
+					ArrayList<Profesor> profesoresTemporal = new ArrayList<>();
 					Vista.mostrarMensaje("");
-					for (Profesor profesor : listaProfesores) {
-						Vista.mostrarMensaje("["+ i +"] " + profesor.toString());
-						i++;
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Profesor) {
+							Profesor profesor = (Profesor) persona;
+							Vista.mostrarMensaje("["+ i +"] "+ profesor.toString());
+							profesoresTemporal.add(profesor);
+							i++;
+					    }
 					}
-					
 					Vista.mostrarMensaje("Seleccione el profesor a modificar: ");
 					index = Vista.pedirIndex();
 					index--;
+					Profesor profesorSeleccionado = profesoresTemporal.get(index);
 					Vista.mostrarMensaje("Seleccione atributo a modificar: ");
 					atributo = Vista.mostrarAtributosDeProfesor();
 					
 					switch (atributo) {
 					case 1:
-						listaProfesores.get(index).setNombre(Vista.pedirString("nombre"));
+						profesorSeleccionado.setNombre(Vista.pedirString("nombre"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 2:
-						listaProfesores.get(index).setCedula(Vista.pedirString("cédula"));
+						profesorSeleccionado.setCedula(Vista.pedirString("cédula"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 3:
-						listaProfesores.get(index).setNumeroDeTarjetaProfesional(Vista.pedirString("número de tarjeta profesional"));
+						profesorSeleccionado.setNumeroDeTarjetaProfesional(Vista.pedirString("número de tarjeta profesional"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 0:
@@ -171,33 +186,37 @@ public class Controlador {
 					
 					break;
 				case 3:
+					ArrayList<Decano> decanosTemporal = new ArrayList<>();
 					Vista.mostrarMensaje("");
-					for (Decano decano : listaDecanos) {
-						Vista.mostrarMensaje("["+ i +"] " + decano.toString());
-						i++;
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof Decano) {
+							Decano decano = (Decano) persona;
+							Vista.mostrarMensaje("["+ i +"] "+ decano.toString());
+							decanosTemporal.add(decano);
+							i++;
+					    }
 					}
-					
 					Vista.mostrarMensaje("Seleccione el decano a modificar: ");
 					index = Vista.pedirIndex();
 					index--;
+					Decano decanoSeleccionado = decanosTemporal.get(index);
 					Vista.mostrarMensaje("Seleccione atributo a modificar: ");
 					atributo = Vista.mostrarAtributosDeDecano();
-					
 					switch (atributo) {
 					case 1:
-						listaDecanos.get(index).setNombre(Vista.pedirString("nombre"));
+						decanoSeleccionado.setNombre(Vista.pedirString("nombre"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 2:
-						listaDecanos.get(index).setCedula(Vista.pedirString("cédula"));
+						decanoSeleccionado.setCedula(Vista.pedirString("cédula"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 3:
-						listaDecanos.get(index).setNumeroDeTarjetaProfesional(Vista.pedirString("número de tarjeta profesional"));
+						decanoSeleccionado.setNumeroDeTarjetaProfesional(Vista.pedirString("número de tarjeta profesional"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 4:
-						listaDecanos.get(index).setFacultad(Vista.pedirString("facultad"));
+						decanoSeleccionado.setFacultad(Vista.pedirString("facultad"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 0:
@@ -210,29 +229,33 @@ public class Controlador {
 					
 					break;
 				case 4:
+					ArrayList<PersonalDeSeguridad> personalDeSeguridadTemporal = new ArrayList<>();
 					Vista.mostrarMensaje("");
-					for (PersonalDeSeguridad personalDeSeguridad : listaPersonalDeSeguridad) {
-						Vista.mostrarMensaje("["+ i +"] " + personalDeSeguridad.toString());
-						i++;
+					for (Persona persona : listaPersonas) {
+						if (persona instanceof PersonalDeSeguridad) {
+							PersonalDeSeguridad personalDeSeguridad = (PersonalDeSeguridad) persona;
+							Vista.mostrarMensaje("["+ i +"] "+ personalDeSeguridad.toString());
+							personalDeSeguridadTemporal.add(personalDeSeguridad);
+							i++;
+					    }
 					}
-					
-					Vista.mostrarMensaje("Seleccione el personal de seguridad a modificar: ");
+					Vista.mostrarMensaje("Seleccione el decano a modificar: ");
 					index = Vista.pedirIndex();
 					index--;
+					PersonalDeSeguridad personalDeSeguridad = personalDeSeguridadTemporal.get(index);
 					Vista.mostrarMensaje("Seleccione atributo a modificar: ");
-					atributo = Vista.mostrarAtributosDePersonalDeSeguridad();
-					
+					atributo = Vista.mostrarAtributosDeDecano();
 					switch (atributo) {
 					case 1:
-						listaPersonalDeSeguridad.get(index).setNombre(Vista.pedirString("nombre"));
+						personalDeSeguridad.setNombre(Vista.pedirString("nombre"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 2:
-						listaPersonalDeSeguridad.get(index).setCedula(Vista.pedirString("cédula"));
+						personalDeSeguridad.setCedula(Vista.pedirString("cédula"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 3:
-						listaPersonalDeSeguridad.get(index).setNumeroDeMatricula(Long.parseLong(Vista.pedirString("número de matrícula")));
+						personalDeSeguridad.setNumeroDeMatricula(Long.parseLong(Vista.pedirString("número de matrícula")));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 0:
