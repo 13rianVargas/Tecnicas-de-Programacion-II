@@ -9,7 +9,7 @@ public class Decano extends Profesor{
 	}
 
 	/*/ <- Alternar "*" para comentar o descomentar.
-	public Decano(String nombre, String cedula, long numeroDeTarjetaProfesional) {
+	public Decano(String nombre, String cedula, String numeroDeTarjetaProfesional) {
 		super(nombre, cedula, numeroDeTarjetaProfesional);
 	}
 
@@ -18,7 +18,7 @@ public class Decano extends Profesor{
 	}
 	//*/
 	
-	public Decano(String nombre, String cedula, long numeroDeTarjetaProfesional, String facultad) {
+	public Decano(String nombre, String cedula, String numeroDeTarjetaProfesional, String facultad) {
 		super(nombre, cedula, numeroDeTarjetaProfesional);
 		this.facultad = facultad;
 	}

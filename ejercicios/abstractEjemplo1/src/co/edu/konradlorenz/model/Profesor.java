@@ -2,7 +2,7 @@ package co.edu.konradlorenz.model;
 
 public class Profesor extends Persona implements Empleado{
 
-	private long numeroDeTarjetaProfesional;
+	private String numeroDeTarjetaProfesional;
 
 	public Profesor() {
 		
@@ -13,21 +13,21 @@ public class Profesor extends Persona implements Empleado{
 		super(nombre, cedula);
 	}
 
-	public Profesor(long numeroDeTarjetaProfesional) {
+	public Profesor(String numeroDeTarjetaProfesional) {
 		this.numeroDeTarjetaProfesional = numeroDeTarjetaProfesional;
 	}
 	//*/
 
-	public Profesor(String nombre, String cedula, long numeroDeTarjetaProfesional) {
+	public Profesor(String nombre, String cedula, String numeroDeTarjetaProfesional) {
 		super(nombre, cedula);
 		this.numeroDeTarjetaProfesional = numeroDeTarjetaProfesional;
 	}
 
-	public long getNumeroDeTarjetaProfesional() {
+	public String getNumeroDeTarjetaProfesional() {
 		return numeroDeTarjetaProfesional;
 	}
 
-	public void setNumeroDeTarjetaProfesional(long numeroDeTarjetaProfesional) {
+	public void setNumeroDeTarjetaProfesional(String numeroDeTarjetaProfesional) {
 		this.numeroDeTarjetaProfesional = numeroDeTarjetaProfesional;
 	}
 

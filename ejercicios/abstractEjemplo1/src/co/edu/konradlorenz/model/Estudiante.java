@@ -37,16 +37,17 @@ public class Estudiante extends Persona {
 		return super.toString() + ", Código estudiantil: " + codigoEstudiantil;
 	}
 	
-	public String pagarMatricula() {
-		return "\n <> El estudiante " + this.getNombre() + " pagó la matrícula.";
+	public long pagarMatricula() {
+		long ingenieriaDeSistemas = 5861000;
+		return ingenieriaDeSistemas;
 	}
 	
 	public String asistirAClase() {
 		return "\n <> El estudiante " + this.getNombre() + " está en clase.";
 	}
 
-	public String realizarLectura() {
-		return "\n <> El estudiante " + this.getNombre() + " está leyendo.";
+	public boolean realizarLectura() {
+		return true;
 	}
 	
 	public String entregarTrabajo() {

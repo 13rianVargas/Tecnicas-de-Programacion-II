@@ -8,7 +8,6 @@ public abstract class Persona {
 	}
 	
 	protected Persona(String nombre, String cedula) {
-		super();
 		this.nombre = nombre;
 		this.cedula = cedula;
 	}

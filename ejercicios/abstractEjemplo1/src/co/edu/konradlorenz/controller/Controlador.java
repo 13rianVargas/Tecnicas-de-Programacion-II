@@ -158,7 +158,7 @@ public class Controlador {
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 3:
-						listaProfesores.get(index).setNumeroDeTarjetaProfesional(Long.parseLong(Vista.pedirString("número de tarjeta profesional")));
+						listaProfesores.get(index).setNumeroDeTarjetaProfesional(Vista.pedirString("número de tarjeta profesional"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 0:
@@ -193,7 +193,7 @@ public class Controlador {
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 3:
-						listaDecanos.get(index).setNumeroDeTarjetaProfesional(Long.parseLong(Vista.pedirString("número de tarjeta profesional")));
+						listaDecanos.get(index).setNumeroDeTarjetaProfesional(Vista.pedirString("número de tarjeta profesional"));
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 4:
@@ -345,13 +345,14 @@ public class Controlador {
 					
 					switch (accion) {
 					case 1:
-						Vista.mostrarMensaje(listaEstudiantes.get(index).pagarMatricula());
+						Vista.mostrarMensaje(" <> " + listaEstudiantes.get(index).getNombre() + " pagó la matrícula, con un valor de: " + listaEstudiantes.get(index).pagarMatricula());
 						break;
 					case 2:
 						Vista.mostrarMensaje(listaEstudiantes.get(index).asistirAClase());
 						break;
 					case 3:
-						Vista.mostrarMensaje(listaEstudiantes.get(index).realizarLectura());
+						String mensaje = listaEstudiantes.get(index).realizarLectura() ? " realizó la lectura." : " no realizó la lectura.";
+						Vista.mostrarMensaje(listaEstudiantes.get(index).getNombre() + mensaje);
 						break;
 					case 4:
 						Vista.mostrarMensaje(listaEstudiantes.get(index).entregarTrabajo());
@@ -535,14 +536,14 @@ public class Controlador {
 	}
 
 	private void nuevoProfesor() {
-		Profesor profesor = new Profesor (Vista.pedirString("nombre"),Vista.pedirString("cédula"),Long.parseLong(Vista.pedirString("número de tarjeta profesional")));
+		Profesor profesor = new Profesor (Vista.pedirString("nombre"),Vista.pedirString("cédula"),Vista.pedirString("número de tarjeta profesional"));
 		listaPersonas.add(profesor);
 		listaProfesores.add(profesor);
 		Vista.mostrarMensaje("Profesor creado.");
 	}
 
 	private void nuevoDecano() {
-		Decano decano = new Decano (Vista.pedirString("nombre"),Vista.pedirString("cédula"),Long.parseLong(Vista.pedirString("número de tarjeta profesional")),Vista.pedirString("facultad"));
+		Decano decano = new Decano (Vista.pedirString("nombre"),Vista.pedirString("cédula"),Vista.pedirString("número de tarjeta profesional"),Vista.pedirString("facultad"));
 		listaPersonas.add(decano);
 		listaDecanos.add(decano);
 		Vista.mostrarMensaje("Decano creado.");

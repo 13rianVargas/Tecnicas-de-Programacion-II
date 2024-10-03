@@ -4,6 +4,6 @@ public interface Revolver {
 	
 	public final byte NUMERO_BALAS = 12;
 	
-	public String disparar();
+	public abstract String disparar();
 	
 }
