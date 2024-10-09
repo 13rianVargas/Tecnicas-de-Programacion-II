@@ -1,3 +1,6 @@
 [submodule "krello"]
 	path = krello
 	url = https://github.com/13rianVargas/krello.git
+[submodule "ProyectoVideojuego"]
+	path = ProyectoVideojuego
+	url = https://github.com/Alejandraqt/ProyectoVideojuego
