@@ -1,7 +1,5 @@
 package co.edu.konradlorenz.model;
 
-import java.util.Date;
-
 public abstract class Jugador implements ClienteVip{
 	private String nombre;
 	private long identificacion;
