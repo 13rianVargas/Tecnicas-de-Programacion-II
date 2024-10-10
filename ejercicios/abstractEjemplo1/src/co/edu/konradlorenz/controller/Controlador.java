@@ -13,14 +13,11 @@ public class Controlador {
 	private byte tipoPersona;
 	private byte index;
 	private byte atributo;
-	private byte i;
+	private byte i; //iterador
 	private byte accion;
+	private String time;
 	
 	private ArrayList <Persona> listaPersonas = new ArrayList<>();
-	
-	private LocalDateTime fechaHoraActual = LocalDateTime.now();
-	private DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-	private String actualTime = fechaHoraActual.format(formato);
 	
     public void run() {
         while(opcion != 0) {
@@ -42,7 +39,7 @@ public class Controlador {
 					nuevoPersonalDeSeguridad();
 					break;
 				case 0:
-					Vista.mostrarMensaje("\n <> FIN <> ");
+					Vista.mostrarMensaje("\n <> Volviendo al menú anterior <> ");
 					break;
 				default:
 					Vista.mostrarMensaje("\n >> Opción no válida.");
@@ -89,7 +86,7 @@ public class Controlador {
 					}
 					break;
 				case 0:
-					Vista.mostrarMensaje("\n <> FIN <> ");
+					Vista.mostrarMensaje("\n <> Volviendo al menú anterior <> ");
 					break;
 				default:
 					Vista.mostrarMensaje("\n >> Opción no válida.");
@@ -137,7 +134,7 @@ public class Controlador {
 			            Vista.mostrarMensaje("Atributo actualizado.");
 			            break;
 			        case 0:
-			            Vista.mostrarMensaje("\n <> FIN <> ");
+			            Vista.mostrarMensaje("\n <> Volviendo al menú anterior <> ");
 			            break;
 			        default:
 			            Vista.mostrarMensaje("\n >> Opción no válida.");
@@ -176,7 +173,7 @@ public class Controlador {
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 0:
-						Vista.mostrarMensaje("\n <> FIN <> ");
+						Vista.mostrarMensaje("\n <> Volviendo al menú anterior <> ");
 						break;
 					default:
 						Vista.mostrarMensaje("\n >> Opción no válida.");
@@ -218,7 +215,7 @@ public class Controlador {
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 0:
-						Vista.mostrarMensaje("\n <> FIN <> ");
+						Vista.mostrarMensaje("\n <> Volviendo al menú anterior <> ");
 						break;
 					default:
 						Vista.mostrarMensaje("\n >> Opción no válida.");
@@ -256,10 +253,10 @@ public class Controlador {
 						Vista.mostrarMensaje("Atributo actualizado.");
 						break;
 					case 0:
-						Vista.mostrarMensaje(" <> FIN <> ");
+						Vista.mostrarMensaje("\n <> Volviendo al menú anterior <> ");
 						break;
 					default:
-						Vista.mostrarMensaje(" >> Opción no válida.");
+						Vista.mostrarMensaje("\n >> Opción no válida.");
 						break;
 					}
 					break;
@@ -352,10 +349,10 @@ public class Controlador {
 					Vista.mostrarMensaje("Personal de seguridad eliminado.");
 					break;
 				case 0:
-					Vista.mostrarMensaje(" <> FIN <> ");
+					Vista.mostrarMensaje("\n <> Volviendo al menú anterior <> ");
 					break;
 				default:
-					Vista.mostrarMensaje(" >> Opción no válida.");
+					Vista.mostrarMensaje("\n >> Opción no válida.");
 					break;
 				}
 				break;
@@ -380,31 +377,33 @@ public class Controlador {
 					accion = Vista.mostrarAccionesEstudiante();
 					switch (accion) {
 					case 1:
-						Vista.mostrarMensaje(" <> " + estudiantesTemporal.get(index).getNombre() + " pagó la matrícula, con un valor de: " + estudiantesTemporal.get(index).pagarMatricula());
+						Vista.mostrarMensaje(" <> " + estudiantesTemporal.get(index).getNombre() + " pagó la matrícula, con un valor de: $" + estudiantesTemporal.get(index).pagarMatricula());
 						break;
 					case 2:
 						Vista.mostrarMensaje(estudiantesTemporal.get(index).asistirAClase());
 						break;
 					case 3:
 						String mensaje = estudiantesTemporal.get(index).realizarLectura() ? " realizó la lectura." : " no realizó la lectura.";
-						Vista.mostrarMensaje("\n" + estudiantesTemporal.get(index).getNombre() + mensaje);
+						Vista.mostrarMensaje("\n <> " + estudiantesTemporal.get(index).getNombre() + mensaje);
 						break;
 					case 4:
 						Vista.mostrarMensaje(estudiantesTemporal.get(index).entregarTrabajo());
 						break;
 					case 5:
-						estudiantesTemporal.get(index).registrarEntrada(actualTime);
-						Vista.mostrarMensaje("\n <> Entrada registrada ["+ actualTime +"]");
+						time = getActualTime();
+						estudiantesTemporal.get(index).registrarEntrada(time);
+						Vista.mostrarMensaje("\n <> Entrada registrada ["+ time +"]");
 						break;
 					case 6:
-						estudiantesTemporal.get(index).registrarSalida(actualTime);
-						Vista.mostrarMensaje("\n <> Salida registrada ["+ actualTime +"]");
+						time = getActualTime();
+						estudiantesTemporal.get(index).registrarSalida(time);
+						Vista.mostrarMensaje("\n <> Salida registrada ["+ time +"]");
 						break;
 					case 0:
-						Vista.mostrarMensaje(" <> FIN <> ");
+						Vista.mostrarMensaje("\n <> Volviendo al menú anterior <> ");
 						break;
 					default:
-						Vista.mostrarMensaje(" >> Opción no válida.");
+						Vista.mostrarMensaje("\n >> Opción no válida.");
 						break;
 					}
 					
@@ -429,28 +428,30 @@ public class Controlador {
 						Vista.mostrarMensaje(profesoresTemporal.get(index).dictarClase());
 						break;
 					case 2:
-						String mensaje = profesoresTemporal.get(index).cobrarSueldo() ? "Se cobró el sueldo." : "No se cobró el sueldo.";
-						Vista.mostrarMensaje("\n" + mensaje);
+						String mensaje = profesoresTemporal.get(index).cobrarSueldo() ? " cobró el sueldo." : " no cobró el sueldo.";
+						Vista.mostrarMensaje("\n <>  " + profesoresTemporal.get(index).getNombre() + mensaje);
 						break;
 					case 3:
-						Vista.mostrarMensaje("Se pagó " + profesoresTemporal.get(index).pagarImpuestos() + " en impuestos.");
+						Vista.mostrarMensaje("\n <> " + profesoresTemporal.get(index).getNombre() + " pagó $" + profesoresTemporal.get(index).pagarImpuestos() + " en impuestos.");
 						break;
 					case 4:
 						Vista.mostrarMensaje(profesoresTemporal.get(index).asistirAReunion());
 						break;
 					case 5:
-						profesoresTemporal.get(index).registrarEntrada(actualTime);
-						Vista.mostrarMensaje("\n <> Entrada registrada ["+ actualTime +"]");
+						time = getActualTime();
+						profesoresTemporal.get(index).registrarEntrada(time);
+						Vista.mostrarMensaje("\n <> Entrada registrada ["+ time +"]");
 						break;
 					case 6:
-						profesoresTemporal.get(index).registrarSalida(actualTime);
-						Vista.mostrarMensaje("\n <> Salida registrada ["+ actualTime +"]");
+						time = getActualTime();
+						profesoresTemporal.get(index).registrarSalida(time);
+						Vista.mostrarMensaje("\n <> Salida registrada ["+ time +"]");
 						break;
 					case 0:
-						Vista.mostrarMensaje(" <> FIN <> ");
+						Vista.mostrarMensaje("\n <> Volviendo al menú anterior <> ");
 						break;
 					default:
-						Vista.mostrarMensaje(" >> Opción no válida.");
+						Vista.mostrarMensaje("\n >> Opción no válida.");
 						break;
 					}
 					
@@ -475,11 +476,11 @@ public class Controlador {
 						Vista.mostrarMensaje(decanosTemporal.get(index).dictarClase());
 						break;
 					case 2:
-						String mensaje = decanosTemporal.get(index).cobrarSueldo() ? "Se cobró el sueldo." : "No se cobró el sueldo.";
-						Vista.mostrarMensaje("\n" + mensaje);
+						String mensaje = decanosTemporal.get(index).cobrarSueldo() ? " cobró el sueldo." : " no cobró el sueldo.";
+						Vista.mostrarMensaje("\n <> " + decanosTemporal.get(index).getNombre() + mensaje);
 						break;
 					case 3:
-						Vista.mostrarMensaje("Se pagó " + decanosTemporal.get(index).pagarImpuestos() + " en impuestos.");
+						Vista.mostrarMensaje("\n <> " + decanosTemporal.get(index).getNombre() + " pagó $" + decanosTemporal.get(index).pagarImpuestos() + " en impuestos.");
 						break;
 					case 4:
 						Vista.mostrarMensaje(decanosTemporal.get(index).asistirAReunion());
@@ -488,18 +489,20 @@ public class Controlador {
 						Vista.mostrarMensaje(decanosTemporal.get(index).presentarReportes());
 						break;
 					case 6:
-						decanosTemporal.get(index).registrarEntrada(actualTime);
-						Vista.mostrarMensaje("\n <> Entrada registrada ["+ actualTime +"]");
+						time = getActualTime();
+						decanosTemporal.get(index).registrarEntrada(time);
+						Vista.mostrarMensaje("\n <> Entrada registrada ["+ time +"]");
 						break;
 					case 7:
-						decanosTemporal.get(index).registrarSalida(actualTime);
-						Vista.mostrarMensaje("\n <> Salida registrada ["+ actualTime +"]");
+						time = getActualTime();
+						decanosTemporal.get(index).registrarSalida(time);
+						Vista.mostrarMensaje("\n <> Salida registrada ["+ time +"]");
 						break;
 					case 0:
-						Vista.mostrarMensaje(" <> FIN <> ");
+						Vista.mostrarMensaje("\n <> Volviendo al menú anterior <> ");
 						break;
 					default:
-						Vista.mostrarMensaje(" >> Opción no válida.");
+						Vista.mostrarMensaje("\n >> Opción no válida.");
 						break;
 					}
 					
@@ -524,37 +527,39 @@ public class Controlador {
 						Vista.mostrarMensaje(personalDeSeguridadTemporal.get(index).disparar());
 						break;
 					case 2:
-						String mensaje = personalDeSeguridadTemporal.get(index).cobrarSueldo() ? "Se cobró el sueldo." : "No se cobró el sueldo.";
-						Vista.mostrarMensaje("\n" + mensaje);
+						String mensaje = personalDeSeguridadTemporal.get(index).cobrarSueldo() ? " cobró el sueldo." : " no cobró el sueldo.";
+						Vista.mostrarMensaje("\n <> " + personalDeSeguridadTemporal.get(index).getNombre() + mensaje);
 						break;
 					case 3:
-						Vista.mostrarMensaje("Se pagó " + personalDeSeguridadTemporal.get(index).pagarImpuestos() + " en impuestos.");
+						Vista.mostrarMensaje("\n <> "+ personalDeSeguridadTemporal.get(index).getNombre() +" pagó $" + personalDeSeguridadTemporal.get(index).pagarImpuestos() + " en impuestos.");
 						break;
 					case 4:
 						Vista.mostrarMensaje(personalDeSeguridadTemporal.get(index).asistirAReunion());
 						break;
 					case 5:
-						personalDeSeguridadTemporal.get(index).registrarEntrada(actualTime);
-						Vista.mostrarMensaje("\n <> Entrada registrada ["+ actualTime +"]");
+						time = getActualTime();
+						personalDeSeguridadTemporal.get(index).registrarEntrada(time);
+						Vista.mostrarMensaje("\n <> Entrada registrada ["+ time +"]");
 						break;
 					case 6:
-						personalDeSeguridadTemporal.get(index).registrarSalida(actualTime);
-						Vista.mostrarMensaje("\n <> Salida registrada ["+ actualTime +"]");
+						time = getActualTime();
+						personalDeSeguridadTemporal.get(index).registrarSalida(time);
+						Vista.mostrarMensaje("\n <> Salida registrada ["+ time +"]");
 						break;
 					case 0:
-						Vista.mostrarMensaje(" <> FIN <> ");
+						Vista.mostrarMensaje("\n <> Volviendo al menú anterior <> ");
 						break;
 					default:
-						Vista.mostrarMensaje(" >> Opción no válida.");
+						Vista.mostrarMensaje("\n >> Opción no válida.");
 						break;
 					}
 					
 					break;
 				case 0:
-					Vista.mostrarMensaje(" <> FIN <> ");
+					Vista.mostrarMensaje("\n <> Volviendo al menú anterior <> ");
 					break;
 				default:
-					Vista.mostrarMensaje(" >> Opción no válida.");
+					Vista.mostrarMensaje("\n >> Opción no válida.");
 					break;
 				}
 				
@@ -592,4 +597,12 @@ public class Controlador {
 		listaPersonas.add(personalDeSeguridad);
 		Vista.mostrarMensaje("\n <> Personal de seguridad creado. <>");
 	}
+
+	private String getActualTime(){
+		LocalDateTime fechaHoraActual = LocalDateTime.now(); //Formato de LocalDate Time: YYYY-MM-DDTHH:MM:SS
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"); //Formato más agradable a la vista.
+		String actualTime = fechaHoraActual.format(formato);
+		return actualTime;
+	}
+
 }

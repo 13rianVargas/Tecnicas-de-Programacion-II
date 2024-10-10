@@ -31,7 +31,7 @@ public class Vista {
         		+ "   [5] Eliminar persona. \n"
         		+ "   [6] Ejecutar acciones. \n"
         		+ "   [0] Salir. \n"
-        		+ "    >> Ingrese una opción:");
+        		+ "    >> Ingrese una opción: ");
     	
     	Vista v = new Vista();
     	byte opcion = v.sc.nextByte();
@@ -45,8 +45,8 @@ public class Vista {
         		+ "   [2] Profesor. \n"
         		+ "   [3] Decano. \n"
         		+ "   [4] Personal de seguridad. \n"
-        		+ "   [0] Salir. \n"
-        		+ "    >> Ingrese una opción:");
+        		+ "   [0] Volver. \n"
+        		+ "    >> Ingrese una opción: ");
     	
     	Vista v = new Vista();
     	byte opcion = v.sc.nextByte();
@@ -59,8 +59,8 @@ public class Vista {
         		+ "   [1] Nombre. \n"
         		+ "   [2] Cédula. \n"
         		+ "   [3] Código Estudiantil. \n"
-        		+ "   [0] Salir. \n"
-        		+ "    >> Ingrese una opción:");
+        		+ "   [0] Volver. \n"
+        		+ "    >> Ingrese una opción: ");
     	
     	Vista v = new Vista();
     	byte atributo = v.sc.nextByte();
@@ -73,8 +73,8 @@ public class Vista {
         		+ "   [1] Nombre. \n"
         		+ "   [2] Cédula. \n"
         		+ "   [3] Número de tarjeta profesional. \n"
-        		+ "   [0] Salir. \n"
-        		+ "    >> Ingrese una opción:");
+        		+ "   [0] Volver. \n"
+        		+ "    >> Ingrese una opción: ");
     	
     	Vista v = new Vista();
     	byte atributo = v.sc.nextByte();
@@ -88,8 +88,8 @@ public class Vista {
         		+ "   [2] Cédula. \n"
         		+ "   [3] Número de tarjeta profesional. \n"
         		+ "   [4] Facultad. \n"
-        		+ "   [0] Salir. \n"
-        		+ "    >> Ingrese una opción:");
+        		+ "   [0] Volver. \n"
+        		+ "    >> Ingrese una opción: ");
     	
     	Vista v = new Vista();
     	byte atributo = v.sc.nextByte();
@@ -102,8 +102,8 @@ public class Vista {
         		+ "   [1] Nombre. \n"
         		+ "   [2] Cédula. \n"
         		+ "   [3] Número de matrícula. \n"
-        		+ "   [0] Salir. \n"
-        		+ "    >> Ingrese una opción:");
+        		+ "   [0] Volver. \n"
+        		+ "    >> Ingrese una opción: ");
     	
     	Vista v = new Vista();
     	byte atributo = v.sc.nextByte();
@@ -119,8 +119,8 @@ public class Vista {
         		+ "   [4] Entregar trabajo. \n"
         		+ "   [5] Registrar ingreso. \n"
         		+ "   [6] Registrar salida. \n"
-        		+ "   [0] Salir. \n"
-        		+ "    >> Ingrese una opción:");
+        		+ "   [0] Volver. \n"
+        		+ "    >> Ingrese una opción: ");
     	
     	Vista v = new Vista();
     	byte accion = v.sc.nextByte();
@@ -136,8 +136,8 @@ public class Vista {
         		+ "   [4] Asistir a reunión. \n"
         		+ "   [5] Registrar ingreso. \n"
         		+ "   [6] Registrar salida. \n"
-        		+ "   [0] Salir. \n"
-        		+ "    >> Ingrese una opción:");
+        		+ "   [0] Volver. \n"
+        		+ "    >> Ingrese una opción: ");
     	
     	Vista v = new Vista();
     	byte accion = v.sc.nextByte();
@@ -154,8 +154,8 @@ public class Vista {
         		+ "   [5] Presentar reportes. \n"
         		+ "   [6] Registrar ingreso. \n"
         		+ "   [7] Registrar salida. \n"
-        		+ "   [0] Salir. \n"
-        		+ "    >> Ingrese una opción:");
+        		+ "   [0] Volver. \n"
+        		+ "    >> Ingrese una opción: ");
     	
     	Vista v = new Vista();
     	byte accion = v.sc.nextByte();
@@ -171,8 +171,8 @@ public class Vista {
         		+ "   [4] Asistir a reunión. \n"
         		+ "   [5] Registrar ingreso. \n"
         		+ "   [6] Registrar salida. \n"
-        		+ "   [0] Salir. \n"
-        		+ "    >> Ingrese una opción:");
+        		+ "   [0] Volver. \n"
+        		+ "    >> Ingrese una opción: ");
     	
     	Vista v = new Vista();
     	byte accion = v.sc.nextByte();
