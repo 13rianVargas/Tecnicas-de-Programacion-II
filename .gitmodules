@@ -4,6 +4,3 @@
 [submodule "ProyectoVideojuego"]
 	path = ProyectoVideojuego
 	url = https://github.com/Alejandraqt/ProyectoVideojuego
-[submodule "CineMoc"]
-	path = CineMoc
-	url = https://github.com/13rianVargas/CineMoc
