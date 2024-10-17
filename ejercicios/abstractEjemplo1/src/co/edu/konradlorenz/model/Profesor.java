@@ -58,12 +58,12 @@ public class Profesor extends Persona implements Empleado{
 
 	@Override
 	public void registrarEntrada(String actualTime) {
-		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void registrarSalida(String actualTime) {
-		// TODO Auto-generated method stub
+		
 	}
 	
 }
