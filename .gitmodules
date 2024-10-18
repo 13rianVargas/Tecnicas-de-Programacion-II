@@ -7,3 +7,6 @@
 [submodule "cineMoc"]
 	path = cineMoc
 	url = https://github.com/13rianVargas/cineMoc
+[submodule "konradBank"]
+	path = konradBank
+	url = https://github.com/13rianVargas/konradBank
