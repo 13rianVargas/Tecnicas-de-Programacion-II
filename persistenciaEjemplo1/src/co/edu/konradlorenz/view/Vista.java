@@ -13,5 +13,11 @@ public class Vista {
     	Vista v = new Vista();
         return v.sc.nextLine();
     }
+
+	public static int pedirEntero(String menu) {
+		System.out.println(menu);
+    	Vista v = new Vista();
+        return v.sc.nextInt();
+	}
     
 }
