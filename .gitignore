@@ -6,3 +6,10 @@
 /bin/
 
 .DS_Store
+/actividadGUI2/nbproject/private/
+/krelloNB/nbproject/private/
+/krelloNB/build/
+
+*.prefs
+
+RemoteSystemsTempFiles/
