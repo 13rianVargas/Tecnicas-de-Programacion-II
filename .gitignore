@@ -13,3 +13,4 @@
 *.prefs
 
 RemoteSystemsTempFiles/
+/SuperLorenzWeb/nbproject/private/
