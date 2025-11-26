@@ -101,8 +101,8 @@ Conversor de medidas con interfaz gráfica que permite convertir valores entre d
 
 | Concepto | Proyectos Relacionados |
 |----------|----------------------|
-| Herencia | ligaPostobon, ejercicios/herenciaEjemplo1-2 |
-| Interfaces | ejercicios/interfaceEjemplo0-3 |
+| Herencia | ligaPostobon, ejercicios/herenciaEjemplo1, ejercicios/herenciaEjemplo2 |
+| Interfaces | ejercicios/interfaceEjemplo0, interfaceEjemplo1, interfaceEjemplo2, interfaceEjemplo3 |
 | Clases Abstractas | ejercicios/abstractEjemplo1, ligaPostobon |
 | Excepciones | excepcionesExpo, ejercicios/excepcionesEjemplo1 |
 | GUI (Swing) | actividadGUI, crudEstudiantes, parqueaderoKonradLorenz |
